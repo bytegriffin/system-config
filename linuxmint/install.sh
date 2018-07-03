@@ -17,6 +17,9 @@ echo '正在调整屏幕默认亮度'
 sudo apt install xbacklight -y
 xbacklight = 40%
 
+echo "正在安装fcitx输入法"
+sudo apt-get install fcitx-bin fcitx-table fcitx-pinyin -y 
+
 echo '正在下载搜狗输入法安装包'
 wget http://cdn2.ime.sogou.com/dl/index/1524572264/sogoupinyin_2.2.0.0108_amd64.deb
 
@@ -236,7 +239,7 @@ sudo echo "export YARN_HOME=$HADOOP_HOME" >> /etc/profile
 sudo echo "export HADOOP_CONF_DIR=$HADOOP_COMMON_HOME/etc/hadoop" >> /etc/profile
 sudo echo "export HDFS_CONF_DIR=${HADOOP_HOME}/etc/hadoop" >> /etc/profile
 sudo echo "export YARN_CONF_DIR=${HADOOP_HOME}/etc/hadoop" >> /etc/profile
-sudo echo "export HADOOP_OPTS='-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR'" >> /etc/profile
+sudo echo 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR"' >> /etc/profile
 sudo echo "export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native/:$LD_LIBRARY_PATH" >> /etc/profile
 sudo echo "export HBASE_HOME=/opt/ide/hbase-2.0.1" >> /etc/profile
 sudo echo "export PATH=$HBASE_HOME/bin:$PATH" >> /etc/profile
