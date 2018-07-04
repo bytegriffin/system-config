@@ -155,6 +155,12 @@ sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_171/bi
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
+echo “正在安装python3 pip”
+sudo apt-get install python3 python3-pip -y
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
+sudo apt-get install python3-setuptools
+
 echo "正在安装Mysql8 注意:选择采用5.x的加密方式"
 wget https://repo.mysql.com//mysql-apt-config_0.8.10-1_all.deb
 sudo dpkg -i mysql-*.deb
