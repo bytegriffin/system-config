@@ -58,7 +58,7 @@ echo "正在安装文泉驿字体套件"
 sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
 
 echo '正在安装常用软件'
-sudo apt-get install wget ctags curl vsftpd gnupg2 git tmux meld htop putty subversion nload  iptraf iftop tree apt-transport-https ca-certificates software-properties-common -y
+sudo apt-get install wget ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload  iptraf iftop tree apt-transport-https ca-certificates software-properties-common -y
 
 echo '正在安装exfat,ntfs-3g'
 sudo apt-get install exfat-fuse exfat-utils ntfs-3g -y
@@ -171,6 +171,11 @@ sudo apt install kazam -y
 
 echo '正在安装font manager字体管理工具'
 sudo apt install font-manager -y
+
+echo “正在安装git”
+sudo apt install git -y
+git config --global user.name "bytegriffin"
+git config --global user.email "bytegriffin@163.com"
 
 echo '正在安装jdk1.8'
 wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz
