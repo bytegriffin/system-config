@@ -58,7 +58,7 @@ echo "正在安装文泉驿字体套件"
 sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
 
 echo '正在安装常用软件'
-sudo apt-get install wget ctags curl vsftpd git tmux meld htop putty subversion nload  iptraf iftop tree apt-transport-https ca-certificates software-properties-common -y
+sudo apt-get install wget ctags curl vsftpd gnupg2 git tmux meld htop putty subversion nload  iptraf iftop tree apt-transport-https ca-certificates software-properties-common -y
 
 echo '正在安装exfat,ntfs-3g'
 sudo apt-get install exfat-fuse exfat-utils ntfs-3g -y
