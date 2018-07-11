@@ -1,136 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
- <localRepository>${user.home}/repository/maven</localRepository>
+	<localRepository>${user.home}/repository/maven</localRepository>
 
-  <pluginGroups>
+	<pluginGroups>
 
-  </pluginGroups>
+	</pluginGroups>
 
-  <proxies>
+	<proxies>
 
-  </proxies>
+	</proxies>
 
-  <servers>
-    <server>
-      <id>ossrh</id>
-      <username>bytegriffin</username>
-      <password>And4walker!!!</password>
-    </server>
-  </servers>
+	<servers>
+		<server>
+			<id>ossrh</id>
+			<username>bytegriffin</username>
+			<password>And4walker!!!</password>
+		</server>
+	</servers>
 
-  <mirrors>
+	<mirrors>
 
-    <mirror>
-            <id>repo2</id>
-            <mirrorOf>central</mirrorOf>
-            <name>Human Readable Name for this Mirror.</name>
-      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <!--url>http://uk.maven.org/maven2/</url-->
-        </mirror>
+		<mirror>
+			<id>repo2</id>
+			<mirrorOf>central</mirrorOf>
+			<name>Human Readable Name for this Mirror.</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<!--url>http://uk.maven.org/maven2/</url -->
+		</mirror>
 
-        <mirror>
-            <id>ui</id>
-            <mirrorOf>central</mirrorOf>
-            <name>Human Readable Name for this Mirror.</name>
-           <url>http://repo2.maven.org/maven2/</url>
-        </mirror>
+		<mirror>
+			<id>ui</id>
+			<mirrorOf>central</mirrorOf>
+			<name>Human Readable Name for this Mirror.</name>
+			<url>http://repo2.maven.org/maven2/</url>
+		</mirror>
 
-        <mirror>
-            <id>jboss-public-repository-group</id>
-            <mirrorOf>central</mirrorOf>
-            <name>JBoss Public Repository Group</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public</url>
-        </mirror>
-     
-  </mirrors>
+		<mirror>
+			<id>jboss-public-repository-group</id>
+			<mirrorOf>central</mirrorOf>
+			<name>JBoss Public Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+		</mirror>
 
-  <profiles>
-  <profile>
-    <repositories>
-      <repository>
-              <id>central</id>
-              <name>Central Repository</name>
-              <url>http://repo1.maven.org/maven2/</url>
-              <snapshots>
-                  <enabled>false</enabled>
-              </snapshots>
-          </repository>
-          <repository>
-              <id>jboss-public-repository-group</id>
-              <name>JBoss Public Repository Group</name>
-              <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-              <layout>default</layout>
-              <releases>
-                  <enabled>true</enabled>
-                  <updatePolicy>never</updatePolicy>
-              </releases>
-              <snapshots>
-                  <enabled>true</enabled>
-                  <updatePolicy>never</updatePolicy>
-              </snapshots>
-          </repository>
-          <repository>
-              <id>jboss-deprecated</id>
-              <name>JBoss Deprecated</name>
-              <url>https://repository.jboss.org/nexus/content/repositories/deprecated/</url>
-              <layout>default</layout>
-              <releases>
-                  <enabled>true</enabled>
-                  <updatePolicy>never</updatePolicy>
-              </releases>
-              <snapshots>
-                  <enabled>false</enabled>
-              </snapshots>
-          </repository>
-          <repository>
-              <id>jboss-maven2-brew</id>
-              <name>JBoss Maven 2 Brew Repository</name>
-              <url>http://repository.jboss.org/maven2-brew/</url>
-              <layout>default</layout>
-              <releases>
-                  <enabled>true</enabled>
-                  <updatePolicy>never</updatePolicy>
-              </releases>
-              <snapshots>
-                  <enabled>false</enabled>
-              </snapshots>
-          </repository>
+	</mirrors>
 
-          <repository>
-              <id>io.spring.repo.maven.release</id>
-              <url>http://repo.spring.io/release/</url>
-              <snapshots>
-                  <enabled>false</enabled>
-              </snapshots>
-          </repository>
-          <repository>
-              <id>io.spring.repo.maven.milestone</id>
-              <url>http://repo.spring.io/milestone/</url>
-              <snapshots>
-                  <enabled>false</enabled>
-              </snapshots>
-          </repository>
-    </repositories>
-     </profile>
-    
-     <profile>
-      <id>ossrh</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <gpg.executable>gpg2</gpg.executable>
-        <gpg.passphrase>and4walker</gpg.passphrase>
-      </properties>
-    </profile>
+	<profiles>
+		<profile>
+			<repositories>
+				<repository>
+					<id>central</id>
+					<name>Central Repository</name>
+					<url>http://repo1.maven.org/maven2/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>jboss-public-repository-group</id>
+					<name>JBoss Public Repository Group</name>
+					<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>jboss-deprecated</id>
+					<name>JBoss Deprecated</name>
+					<url>https://repository.jboss.org/nexus/content/repositories/deprecated/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>jboss-maven2-brew</id>
+					<name>JBoss Maven 2 Brew Repository</name>
+					<url>http://repository.jboss.org/maven2-brew/</url>
+					<layout>default</layout>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
 
-  </profiles>
+				<repository>
+					<id>io.spring.repo.maven.release</id>
+					<url>http://repo.spring.io/release/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>io.spring.repo.maven.milestone</id>
+					<url>http://repo.spring.io/milestone/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
 
-  <activeProfiles>
-    <activeProfile>ossrh</activeProfile>
-  </activeProfiles>
+		<profile>
+			<id>ossrh</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<gpg.executable>gpg2</gpg.executable>
+				<gpg.passphrase>and4walker</gpg.passphrase>
+			</properties>
+		</profile>
+
+	</profiles>
+
+	<activeProfiles>
+		<activeProfile>ossrh</activeProfile>
+	</activeProfiles>
 </settings>
