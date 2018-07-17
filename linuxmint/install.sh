@@ -142,6 +142,14 @@ sudo apt install kazam -y
 echo "正在安装font manager字体管理工具"
 sudo apt install font-manager -y
 
+echo "正在安装wine"
+sudo dpkg --add-architecture i386 
+wget -nc https://dl.winehq.org/wine-builds/Release.key
+sudo apt-key add Release.key
+sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main'
+sudo apt-get update
+sudo apt-get install --install-recommends winehq-stable
+
 echo “正在安装git”
 sudo apt install git -y
 git config --global user.name "bytegriffin"
