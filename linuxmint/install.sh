@@ -140,7 +140,10 @@ echo "正在安装kazam录屏软件"
 sudo apt install kazam -y
 
 echo "正在安装font manager字体管理工具"
-sudo apt install font-manager -y
+sudo apt install font-manager fonts-powerline -y
+
+echo "正在安装SpaceVim"
+curl -sLf https://spacevim.org/cn/install.sh | bash
 
 echo "正在安装wine"
 sudo dpkg --add-architecture i386 
