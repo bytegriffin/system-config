@@ -51,11 +51,8 @@ sudo apt-get update
 sudo apt-get install indicator-sysmonitor -y
 indicator-sysmonitor &
 
-echo "install kolour paint"
+echo "正在安装kolour画图工具"
 sudo apt-get install kolourpaint4 -y 
-
-echo "正在安装文泉驿字体套件"
-sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
 
 echo "正在安装常用软件"
 sudo apt-get install wget ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload  iptraf iftop tree apt-transport-https ca-certificates software-properties-common -y
@@ -92,10 +89,11 @@ sudo apt install bleachbit -y
 echo "正在安装gdebi软件包安装程序"
 sudo apt install gdebi -y
 
-echo "正在安装Flatabulous主题"
-sudo add-apt-repository ppa:noobslab/themes -y
+echo "正在安装Xenlism主题"
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 2B80AC38
+sudo add-apt-repository ppa:xenatt/xenlism
 sudo apt update
-sudo apt-get install flatabulous-theme -y
+sudo apt install xenlism-minimalism-theme xenlism-storm-icon-theme xenlism-wildfire-icon-theme xenlism-finewalls -y
 
 echo "正在安装ultra-flat-icons"
 sudo add-apt-repository ppa:noobslab/icons -y
@@ -169,8 +167,18 @@ sudo rm -rf xdm-2018-x64.tar.xz install.sh readme.txt
 echo "正在安装kazam录屏软件"
 sudo apt install kazam -y
 
+echo "正在安装文泉驿、MS TrueType字体"
+sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
+
+echo "正在安装MS TrueType字体"
+sudo apt install ttf-mscorefonts-installer -y
+sudo fc-cache -f -v
+
 echo "正在安装font manager字体管理工具"
 sudo apt install font-manager fonts-powerline -y
+
+echo "正在安装preload"
+sudo apt-get install preload -y
 
 echo "正在安装SpaceVim"
 curl -sLf https://spacevim.org/cn/install.sh | bash

@@ -6,9 +6,8 @@ echo "--------------------------------------------------"
 echo "请选择速度最快的那个软件源"
 sudo software-properties-gtk
 
-echo "正在更新软件包列表，请稍候。。。"
-sudo apt-get update -y
-sudo apt-get upgrade -y
+echo "正在更新软件包列表，请稍候..."
+sudo apt update && sudo apt upgrade -y
 
 echo "正在清理冗余软件包"
 sudo apt remove --purge firefox  onboard gnome-mines transmission-gtk transmission-common xterm unity-webapps-common onboard -y
@@ -45,11 +44,8 @@ sudo timedatectl set-local-rtc 1 --adjust-system-clock
 sudo timedatectl set-local-rtc true
 sudo timedatectl set-ntp true
 
-echo "安装kolourpaint"
+echo "安装kolour画图"
 sudo apt-get install kolourpaint4 -y 
-
-echo "正在安装文泉驿字体套件"
-sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
 
 echo "正在安装常用软件"
 sudo apt-get install wget ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload iptraf iftop tree apt-transport-https ca-certificates software-properties-common -y
@@ -59,7 +55,6 @@ sudo apt-get install exfat-fuse exfat-utils ntfs-3g -y
 
 echo "正在安装gconf-editor,dconf-editor"
 sudo apt install gconf-editor dconf-editor -y
-
 
 echo "正在安装alien openssh-client ntfs-config"
 sudo apt install alien openssh-client ntfs-config -y
@@ -83,6 +78,9 @@ sudo rm google-chrome-stable_current_amd64.deb
 
 echo "正在安装Adobe Flash Player"
 sudo apt install pepperflashplugin-nonfree
+
+echo "正在安装mint codecs"
+sudo apt install mint-meta-codecs -y
 
 echo "安装解码器"
 sudo apt-get install ubuntu-restricted-extras -y
@@ -139,6 +137,13 @@ sudo rm -rf xdm-2018-x64.tar.xz install.sh readme.txt
 echo "正在安装kazam录屏软件"
 sudo apt install kazam -y
 
+echo "正在安装文泉驿字体套件"
+sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
+
+echo "正在安装MS TrueType字体"
+sudo apt install ttf-mscorefonts-installer -y
+sudo fc-cache -f -v
+
 echo "正在安装font manager字体管理工具"
 sudo apt install font-manager fonts-powerline -y
 
@@ -153,7 +158,7 @@ sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial ma
 sudo apt-get update
 sudo apt-get install --install-recommends winehq-stable
 
-echo “正在安装git”
+echo "正在安装git"
 sudo apt install git -y
 git config --global user.name "bytegriffin"
 git config --global user.email "bytegriffin@163.com"
@@ -166,7 +171,7 @@ sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_171/bi
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
-echo “正在安装python3 pip”
+echo "正在安装python3 pip"
 sudo apt-get install python3 python3-pip -y
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
