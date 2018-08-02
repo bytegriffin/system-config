@@ -210,7 +210,12 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk version
 
 echo "正在安装nodejs"
+sudo apt-get install python-software-properties
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt-get install nodejs npm -y
+sudo npm install -g nrm
+nrm ls
+nrm use taobao
 
 echo "正在安装markdown"
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
