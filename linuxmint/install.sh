@@ -216,6 +216,8 @@ sudo apt-get install nodejs npm -y
 sudo npm install -g nrm
 nrm ls
 nrm use taobao
+sudo npm install -g webpack
+sudo npm install -g gulp
 
 echo "正在安装markdown"
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
