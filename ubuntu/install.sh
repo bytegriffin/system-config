@@ -251,6 +251,11 @@ nrm use taobao
 sudo npm install -g webpack
 sudo npm install -g gulp
 
+echo "正在安装yarn"
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn -y
+sudo apt-get install --no-install-recommends yarn
 
 echo "正在安装markdown"
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
