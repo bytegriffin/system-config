@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Ubuntu 18.04 配置脚本 v2018.7.3"
+echo "Ubuntu 18.04 配置脚本 v2018.8.10"
 echo "--------------------------------------------------"
 
 echo "请选择速度最快的那个软件源"
@@ -11,7 +11,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 echo "正在清理冗余软件包"
-sudo apt remove --purge firefox aisleriot gnome-mahjongg gnome-mines gnome-sudoku onboard onboard-data gnome-mines cheese transmission-gtk transmission-common xterm unity-webapps-common onboard deja-dup -y
+sudo apt remove --purge firefox aisleriot gnome-mahjongg gnome-mines gnome-sudoku gnome-mines cheese transmission-gtk transmission-common deja-dup -y
 
 echo "正在调整屏幕默认亮度"
 sudo apt install xbacklight -y
@@ -35,10 +35,17 @@ echo "正在更新gedit"
 sudo apt install gedit -y
 gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15','UTF-16']"
 
+echo "正在安装git"
+sudo apt install git -y
+git config --global user.name "bytegriffin"
+git config --global user.email "bytegriffin@126.com"
+
 echo "正在安装 oh-my-zsh"
 sudo apt-get install zsh -y
-chsh -s /bin/zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+chsh -s /bin/zsh
+sudo vi ~/.zshrc 
+#将ZSH_THEME="ys"
 
 echo "同步win10和ubuntu的系统时间"
 sudo timedatectl set-local-rtc 1 --adjust-system-clock
@@ -55,27 +62,13 @@ echo "正在安装kolour画图工具"
 sudo apt-get install kolourpaint4 -y 
 
 echo "正在安装常用软件"
-sudo apt-get install wget ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload  iptraf iftop tree apt-transport-https ca-certificates software-properties-common -y
+sudo apt-get install wget exuberant-ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload  iptraf iftop tree apt-transport-https ca-certificates software-properties-common gdebi -y
 
 echo "正在安装exfat,ntfs-3g"
 sudo apt-get install exfat-fuse exfat-utils ntfs-3g -y
 
 echo "正在安装gconf-editor,dconf-editor"
-sudo apt install gconf-editor dconf-editor
-
-echo "设置窗口显示"
-dconf  reset  -f   /org/compiz
-dconf  reset  -f   /org/compizd
-dconf reset -f  /org/compiz/current-profile
-dconf reset -f  /org/compiz/existing-profiles
-setsid unity
-gsettings set com.canonical.Unity.Launcher launcher-position Bottom
-sudo apt install compizconfig-settings-manager -y
-
-echo "正在安装 oh-my-zsh"
-sudo apt-get install zsh -y
-chsh -s /bin/zsh
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+sudo apt install gconf-editor dconf-editor dconf-tools -y
 
 echo "正在安装alien openssh-client ntfs-config"
 sudo apt install alien openssh-client ntfs-config -y
@@ -92,13 +85,8 @@ sudo apt install gdebi -y
 echo "正在安装Xenlism主题"
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 2B80AC38
 sudo add-apt-repository ppa:xenatt/xenlism
-sudo apt update
+sudo apt update -y
 sudo apt install xenlism-minimalism-theme xenlism-storm-icon-theme xenlism-wildfire-icon-theme xenlism-finewalls -y
-
-echo "正在安装ultra-flat-icons"
-sudo add-apt-repository ppa:noobslab/icons -y
-sudo apt-get update
-sudo apt-get install ultra-flat-icons -y
 
 echo "正在下载Google Chrome安装包"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -127,6 +115,7 @@ echo "正在下载网易云音乐安装包"
 wget http://d1.music.126.net/dmusic/netease-cloud-music_1.1.0_amd64_ubuntu.deb
 
 echo "正在安装网易云音乐"
+sudo apt install libcanberra-gtk-module -y
 sudo dpkg -i netease-cloud-music_1.1.0_amd64_ubuntu.deb
 sudo apt -f install -y
 sudo rm netease-cloud-music_1.1.0_amd64_ubuntu.deb
@@ -135,14 +124,12 @@ sudo rm netease-cloud-music_1.1.0_amd64_ubuntu.deb
 #sudo gedit /usr/share/applications/netease-cloud-music.desktop
 #Exec=netease-cloud-music %U   
 #Exec=netease-cloud-music --no-sandbox %U
+#netease-cloud-music
+#cd  ~/.cache
+#sudo chmod -R 777 netease-cloud-music
 
 echo "正在安装 tweak-tool"
 sudo apt-get install unity-tweak-tool gnome-tweak-tool gnome-shell-extensions chrome-gnome-shell gnome-session gtk2-engines-pixbuf libxml2-utils -y
-
-echo "正在安装Arronax，用于创建或编辑启动器图标"
-sudo add-apt-repository ppa:diesch/testing -y
-sudo apt update
-sudo apt install arronax -y
 
 echo "正在安装Shutter截屏软件"
 sudo apt install shutter -y
@@ -187,20 +174,15 @@ echo "正在安装wine"
 sudo dpkg --add-architecture i386 
 wget -nc https://dl.winehq.org/wine-builds/Release.key
 sudo apt-key add Release.key
-sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main'
-sudo apt-get update
+sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+sudo apt-get update -y
 sudo apt-get install --install-recommends winehq-stable
 
-echo "正在安装git"
-sudo apt install git -y
-git config --global user.name "bytegriffin"
-git config --global user.email "bytegriffin@163.com"
-
 echo "正在安装jdk1.8"
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz
 sudo tar xzf /opt/ide/jdk-8u171-linux-x64.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-8u171-linux-x64.tar.gz
-sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_171/bin/java 300  
-sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_171/bin/javac 300
+sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_181/bin/java 300  
+sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_181/bin/javac 300
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
@@ -224,7 +206,7 @@ sudo apt update
 sudo rm -rf dbeaver-*.deb
 
 echo "正在安装Virtualbox"
-wget https://download.virtualbox.org/virtualbox/5.2.14/virtualbox-5.2_5.2.14-123301~Ubuntu~bionic_amd64.deb
+wget https://download.virtualbox.org/virtualbox/5.2.16/virtualbox-5.2_5.2.16-123759~Ubuntu~bionic_amd64.deb
 sudo dpkg -i virtualbox-*.deb
 sudo apt update
 sudo rm -rf virtualbox-*.deb
@@ -243,7 +225,7 @@ sdk version
 
 echo "正在安装nodejs"
 sudo apt-get install python-software-properties
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+#curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt-get install nodejs npm -y
 sudo npm install -g nrm
 nrm ls

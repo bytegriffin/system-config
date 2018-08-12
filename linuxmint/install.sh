@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Linuxmint 19 Cinnamon 配置脚本 v2018.7.3"
+echo "Linuxmint 19 Cinnamon 配置脚本 v2018.8.10"
 echo "--------------------------------------------------"
 
 echo "请选择速度最快的那个软件源"
@@ -10,7 +10,7 @@ echo "正在更新软件包列表，请稍候..."
 sudo apt update && sudo apt upgrade -y
 
 echo "正在清理冗余软件包"
-sudo apt remove --purge firefox  onboard gnome-mines transmission-gtk transmission-common xterm unity-webapps-common onboard -y
+sudo apt remove --purge firefox  onboard gnome-mines transmission-gtk transmission-common xterm unity-webapps-common  -y
 
 echo "正在调整屏幕默认亮度"
 sudo apt install xbacklight -y
@@ -34,10 +34,17 @@ echo "正在更新gedit"
 sudo apt install gedit -y
 gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15','UTF-16']"
 
+echo "正在安装git"
+sudo apt install git -y
+git config --global user.name "bytegriffin"
+git config --global user.email "bytegriffin@126.com"
+
 echo "正在安装 oh-my-zsh"
 sudo apt-get install zsh -y
-chsh -s /bin/zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+chsh -s /bin/zsh
+sudo vi ~/.zshrc 
+#将ZSH_THEME="ys"
 
 echo "同步win10和ubuntu的系统时间"
 sudo timedatectl set-local-rtc 1 --adjust-system-clock
@@ -154,20 +161,15 @@ echo "正在安装wine"
 sudo dpkg --add-architecture i386 
 wget -nc https://dl.winehq.org/wine-builds/Release.key
 sudo apt-key add Release.key
-sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main'
+sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
 sudo apt-get update
 sudo apt-get install --install-recommends winehq-stable
 
-echo "正在安装git"
-sudo apt install git -y
-git config --global user.name "bytegriffin"
-git config --global user.email "bytegriffin@163.com"
-
 echo "正在安装jdk1.8"
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz
 sudo tar xzf /opt/ide/jdk-8u171-linux-x64.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-8u171-linux-x64.tar.gz
-sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_171/bin/java 300  
-sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_171/bin/javac 300
+sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_181/bin/java 300  
+sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_181/bin/javac 300
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
@@ -191,7 +193,7 @@ sudo apt update
 sudo rm -rf dbeaver-*.deb
 
 echo "正在安装Virtualbox"
-wget https://download.virtualbox.org/virtualbox/5.2.14/virtualbox-5.2_5.2.14-123301~Ubuntu~bionic_amd64.deb
+wget https://download.virtualbox.org/virtualbox/5.2.16/virtualbox-5.2_5.2.16-123759~Ubuntu~bionic_amd64.deb
 sudo dpkg -i virtualbox-*.deb
 sudo apt update
 sudo rm -rf virtualbox-*.deb
