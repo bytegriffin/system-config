@@ -7,8 +7,7 @@ echo "请选择速度最快的那个软件源"
 sudo software-properties-gtk
 
 echo "正在更新软件包列表，请稍候。。。"
-sudo apt-get update -y
-sudo apt-get upgrade -y
+sudo apt update && sudo apt upgrade -y
 
 echo "正在清理冗余软件包"
 sudo apt remove --purge firefox aisleriot gnome-mahjongg gnome-mines gnome-sudoku gnome-mines cheese transmission-gtk transmission-common deja-dup -y
@@ -87,6 +86,9 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 2B80AC38
 sudo add-apt-repository ppa:xenatt/xenlism
 sudo apt update -y
 sudo apt install xenlism-minimalism-theme xenlism-storm-icon-theme xenlism-wildfire-icon-theme xenlism-finewalls -y
+
+echo "正在安装arc-theme主题和docky"
+sudo apt install arc-theme docky -y
 
 echo "正在下载Google Chrome安装包"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -178,6 +180,22 @@ sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic ma
 sudo apt-get update -y
 sudo apt-get install --install-recommends winehq-stable
 
+echo "正在安装gcc和g++"
+sudo apt-get install gcc-5 gcc-5-multilib -y
+sudo apt-get install g++-5 g++-5-multilib -y
+sudo apt-get install gcc-6 gcc-6-multilib -y
+sudo apt-get install g++-6 g++-6-multilib -y
+sudo apt-get install gcc-7 gcc-7-multilib -y
+sudo apt-get install g++-7 g++-7-multilib -y
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 70
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 50
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 60
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 70
+sudo update-alternatives --config gcc
+sudo update-alternatives --config g++
+
 echo "正在安装jdk1.8"
 wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz
 sudo tar xzf /opt/ide/jdk-*.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-*-linux-x64.tar.gz
@@ -187,7 +205,7 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
 echo "正在安装python3 pip"
-sudo apt-get install python3 python3-pip -y
+sudo apt-get install python3 python-pip python3-pip -y
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
 sudo apt-get install python3-setuptools
