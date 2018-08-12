@@ -167,7 +167,7 @@ sudo apt-get install --install-recommends winehq-stable
 
 echo "正在安装jdk1.8"
 wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz
-sudo tar xzf /opt/ide/jdk-8u171-linux-x64.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-8u171-linux-x64.tar.gz
+sudo tar xzf /opt/ide/jdk-*.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-*-linux-x64.tar.gz
 sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_181/bin/java 300  
 sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_181/bin/javac 300
 sudo update-alternatives --config java
@@ -232,6 +232,12 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
 sudo add-apt-repository "deb https://typora.io/linux ./"
 sudo apt-get update
 sudo apt-get install typora -y
+
+echo "正在安装Cubic"
+sudo apt-add-repository ppa:cubic-wizard/release
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6494C6D6997C215E
+sudo apt update
+sudo apt install cubic
 
 echo "正在清理安装过程中产生的冗余软件包"
 sudo apt autoremove --purge -y
