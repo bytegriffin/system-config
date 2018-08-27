@@ -189,6 +189,9 @@ sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_181/bi
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
+echo "正在安装golang"
+sudo apt install golang -y
+
 echo "正在安装python3 pip"
 sudo apt-get install python3 python-pip python3-pip -y
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
