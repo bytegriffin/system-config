@@ -26,7 +26,7 @@ if [ -d /etc/profile.d ]; then
   unset i
 fi
 
-export JAVA_HOME=/opt/ide/jdk1.8.0_181
+export JAVA_HOME=/opt/ide/jdk1.8.0_211
 export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$JAVA_HOME/bin:$PATH
@@ -34,17 +34,17 @@ export PATH=$JAVA_HOME/bin:$PATH
 export ANDROID_SDK_HOME=/opt/ide/android-sdk
 export PATH=$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/tools:$PATH
 
-export M2_HOME=/opt/ide/apache-maven-3.5.4
+export M2_HOME=/opt/ide/apache-maven-3.6.1
 export MAVEN_OPTS="-Xms256m -Xmx512m"
 export PATH=$M2_HOME/bin:$PATH
 
-export GRADLE_HOME=/opt/ide/gradle-4.9
+export GRADLE_HOME=/opt/ide/gradle-5.4
 export PATH=$GRADLE_HOME/bin:$PATH
 
-export TOMCAT_HOME=/opt/ide/apache-tomcat-9.0.10
+export TOMCAT_HOME=/opt/ide/apache-tomcat-9.0.19
 export PATH=$TOMCAT_HOME/bin:$PATH
 
-export PROTOC_HOME=/opt/ide/protoc-3.6.1
+export PROTOC_HOME=/opt/ide/protoc-3.7.1
 export PATH=$PROTOC_HOME/bin:$PATH
 
 #protobuf
@@ -65,41 +65,41 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR"
 export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native/:$LD_LIBRARY_PATH
 
-export HBASE_HOME=/opt/ide/hbase-2.1.0
+export HBASE_HOME=/opt/ide/hbase-2.0.1
 export PATH=$HBASE_HOME/bin:$PATH
 
-export HIVE_HOME=/opt/ide/hive-3.1.0
+export HIVE_HOME=/opt/ide/hive-3.0.0
 export PATH=$PATH:$HIVE_HOME/bin
 
 export STORM_HOME=/opt/ide/storm-1.2.2
 export PATH=$PATH:$STORM_HOME/bin
 
-export ZOOKEEPER_HOME=/opt/ide/zookeeper-3.4.13
+export ZOOKEEPER_HOME=/opt/ide/zookeeper-3.4.12
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 
-export KAFKA_HOME=/opt/ide/kafka_2.11-2.0.0
+export KAFKA_HOME=/opt/ide/kafka_2.12-1.1.0
 export PATH=$PATH:$KAFKA_HOME/bin
 
-export SCALA_HOME=/opt/ide/scala-2.11.12
+export SCALA_HOME=/opt/ide/scala-2.12.6
 export PATH=${SCALA_HOME}/bin:$PATH
 
 export SPARK_HOME=/opt/ide/spark-2.3.1
 export PATH=$PATH:$SPARK_HOME/bin
 
-export DRILL_HOME=/opt/ide/apache-drill-1.14.0
+export DRILL_HOME=/opt/ide/drill-1.13.0
 export PATH=$PATH:$DRILL_HOME/bin
 
 export MONGODB_HOME=/opt/ide/mongodb
 export PATH=$PATH:$MONGODB_HOME/bin
 
-export REDIS_HOME=/opt/ide/redis-4.0.11
+export REDIS_HOME=/opt/ide/redis-4.0.9
 export PATH=$PATH:$REDIS_HOME/bin
 
-export FLINK_HOME=/opt/ide/flink-1.6.0
+export FLINK_HOME=/opt/ide/flink-1.5.0
 export PATH=$PATH:$FLINK_HOME/bin
 
-export PRESTO_HOME=/opt/ide/presto-server-0.208
+export PRESTO_HOME=/opt/ide/presto-server-0.205
 export PATH=$PATH:$PRESTO_HOME/bin
 
-export FLUME_HOME=/opt/ide/apache-flume-1.8.0
+export FLUME_HOME=/opt/ide/flume-1.8.0
 export PATH=$PATH:$FLUME_HOME/bin

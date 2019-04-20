@@ -159,10 +159,10 @@ curl -sLf https://spacevim.org/cn/install.sh | bash
 
 echo "正在安装wine"
 sudo dpkg --add-architecture i386 
-wget -nc https://dl.winehq.org/wine-builds/Release.key
-sudo apt-key add Release.key
+wget -nc https://dl.winehq.org/wine-builds/winehq.key
+sudo apt-key add winehq.key
 sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
-sudo apt-get update
+sudo apt-get update -y
 sudo apt-get install --install-recommends winehq-stable
 
 echo "正在安装gcc和g++"
@@ -182,10 +182,10 @@ sudo update-alternatives --config gcc
 sudo update-alternatives --config g++
 
 echo "正在安装jdk1.8"
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  -P /opt/ide https://download.oracle.com/otn/java/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jdk-8u211-linux-x64.tar.gz
 sudo tar xzf /opt/ide/jdk-*.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-*-linux-x64.tar.gz
-sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_181/bin/java 300  
-sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_181/bin/javac 300
+sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_211/bin/java 300  
+sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_211/bin/javac 300
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
@@ -199,7 +199,7 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
 sudo apt-get install python3-setuptools
 
 echo "正在安装Mysql8 注意:选择采用5.x的加密方式"
-wget https://repo.mysql.com//mysql-apt-config_0.8.10-1_all.deb
+wget https://repo.mysql.com/mysql-apt-config_0.8.12-1_all.deb
 sudo dpkg -i mysql-*.deb
 sudo apt update
 sudo apt-get install mysql-server -y
@@ -212,17 +212,16 @@ sudo apt update
 sudo rm -rf dbeaver-*.deb
 
 echo "正在安装Virtualbox"
-wget https://download.virtualbox.org/virtualbox/5.2.16/virtualbox-5.2_5.2.16-123759~Ubuntu~bionic_amd64.deb
+wget https://download.virtualbox.org/virtualbox/6.0.6/virtualbox-6.0_6.0.6-130049~Ubuntu~bionic_amd64.deb
 sudo dpkg -i virtualbox-*.deb
 sudo apt update
 sudo rm -rf virtualbox-*.deb
 
 echo "正在安装docker"
-sudo apt-get remove docker docker-engine docker.io -y
-sudo curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+sudo apt-get remove docker docker-engine docker.io
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-sudo apt install aufs-tools cgroupfs-mount pigz -y
-sudo apt-get update 
+sudo apt install aufs-tools cgroupfs-mount pigz
 sudo apt-get install docker-ce -y
 
 echo "正在安装SDKMan"
@@ -232,8 +231,8 @@ sdk version
 
 echo "正在安装nodejs"
 sudo apt-get install python-software-properties
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt-get install nodejs npm -y
+curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+sudo apt-get install -y nodejs
 sudo npm install -g nrm
 nrm ls
 nrm use taobao
