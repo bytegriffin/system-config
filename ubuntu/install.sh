@@ -101,7 +101,7 @@ sudo rm google-chrome-stable_current_amd64.deb
 echo "正在安装 ttf-mscorefonts-installer"
 sudo wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo apt-get purge ttf-mscorefonts-installer -y
-sudo apt install./ttf-mscorefonts-installer_3.6_all.deb
+sudo apt install ./ttf-mscorefonts-installer_3.6_all.deb
 
 echo "正在安装文泉驿、MS TrueType字体"
 sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
