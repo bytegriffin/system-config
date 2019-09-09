@@ -28,7 +28,6 @@ wget http://cdn2.ime.sogou.com/dl/index/1524572264/sogoupinyin_2.2.0.0108_amd64.
 
 echo "正在安装搜狗输入法"
 sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
-sudo apt -f install -y
 sudo rm sogoupinyin_2.2.0.0108_amd64.deb
 
 echo "正在安装Vim和Ntfs-config vim-youcompeteme"
@@ -140,7 +139,6 @@ wget http://d1.music.126.net/dmusic/netease-cloud-music_1.2.1_amd64_ubuntu_20190
 echo "正在安装网易云音乐"
 sudo apt install libcanberra-gtk-module -y
 sudo dpkg -i netease-cloud-music_1.1.0_amd64_ubuntu.deb
-sudo apt -f install -y
 sudo rm netease-*.deb
 
 echo "正在安装 tweak-tool"
@@ -282,14 +280,13 @@ sudo mv scala*.tgz /opt/ide && tar xzf /opt/ide/scala*.tgz -C /opt/ide && rm -rf
 echo "正在安装mongodb"
 wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.0_amd64.deb
 sudo dpkg -i mongodb-*.deb
-sudo apt -f install -y
 sudo rm mongodb-*.deb
 
 echo "正在安装VSCode"
 wget https://vscode.cdn.azure.cn/stable/3db7e09f3b61f915d03bbfa58e258d6eee843f35/code_1.38.0-1567547996_amd64.deb
-sudo dpkg -i code-*.deb
+sudo dpkg -i code*.deb
 sudo apt -f install -y
-sudo rm code-*.deb
+sudo rm code*.deb
 
 echo "正在清理安装过程中产生的冗余软件包"
 sudo apt autoremove --purge -y
