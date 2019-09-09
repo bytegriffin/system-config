@@ -125,4 +125,3 @@ sudo pacman -Scc
 sudo journalctl --vacuum-size=50M
 yay -c  
 
-

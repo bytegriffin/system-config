@@ -10,14 +10,15 @@ echo "正在更新软件包列表，请稍候。。。"
 sudo apt update && sudo apt upgrade -y
 
 echo "正在清理冗余软件包"
-sudo apt remove --purge firefox aisleriot gnome-mahjongg gnome-mines gnome-sudoku gnome-mines cheese transmission-gtk transmission-common deja-dup -y
+sudo apt remove --purge firefox aisleriot gnome-mahjongg gnome-mines gnome-sudoku gnome-mines cheese transmission-gtk transmission-common deja-dup hexchat rhythmbox -y
 
 echo "正在安装gdebi软件包安装程序"
 sudo apt install gdebi -y
 
-echo "正在调整屏幕默认亮度"
-sudo apt install xbacklight -y
-xbacklight = 40%
+echo "将apt-get更换为apt-fast"
+git clone https://github.com/ilikenwf/apt-fast.git
+cd apt-fast
+sudo ./quick-install.sh
 
 echo "正在安装fcitx输入法"
 sudo apt-get install fcitx-bin fcitx-table fcitx-pinyin fcitx-config-common fcitx-config-gtk -y 
@@ -46,13 +47,18 @@ echo "正在安装 oh-my-zsh"
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 chsh -s /bin/zsh
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 sudo vi ~/.zshrc 
-#将ZSH_THEME="ys"
+#将ZSH_THEME="ys" plugins 加入 zsh-autosuggestions
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zshrc
 
 echo "同步win10和ubuntu的系统时间"
 sudo timedatectl set-local-rtc 1 --adjust-system-clock
 sudo timedatectl set-local-rtc true
 sudo timedatectl set-ntp true
+sudo apt-get install ntpdate
+sudo ntpdate time.windows.com
 
 echo "安装监控CPU、网络的使用率"
 sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor  
@@ -200,7 +206,7 @@ sudo update-alternatives --config g++
 
 echo "正在安装jdk1.8"
 wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u221-linux-x64.tar.gz
-sudo tar xzf /opt/ide/jdk-*.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-*-linux-x64.tar.gz
+sudo mv jdk-* /opt/ide/jdk-linux-x64.tar.gz && tar xzf /opt/ide/jdk-*.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-linux-x64.tar.gz
 sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_211/bin/java 300  
 sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_211/bin/javac 300
 sudo update-alternatives --config java
@@ -258,7 +264,7 @@ sudo apt-get update && sudo apt-get install yarn -y
 sudo apt-get install --no-install-recommends yarn
 
 echo "正在安装markdown"
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 sudo add-apt-repository 'deb https://typora.io/linux ./'
 sudo apt-get update
 sudo apt-get install typora
@@ -269,5 +275,18 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6494C6D6997C215E
 sudo apt update
 sudo apt install cubic
 
+echo "安装scala"
+wget https://downloads.lightbend.com/scala/2.13.0/scala-2.13.0.tgz
+sudo mv scala*.tgz /opt/ide && tar xzf /opt/ide/scala*.tgz -C /opt/ide && rm -rf /opt/ide/scala*.tgz
+
+echo "正在安装mongodb"
+wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.0_amd64.deb
+sudo dpkg -i mongodb-*.deb
+sudo apt -f install -y
+sudo rm mongodb-*.deb
+
 echo "正在清理安装过程中产生的冗余软件包"
 sudo apt autoremove --purge -y
+sudo apt autoclean
+sudo apt clean
+sudo apt autoremove
