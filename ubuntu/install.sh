@@ -129,21 +129,13 @@ echo "安装FFmpeg"
 sudo apt-get install ffmpeg -y
 
 echo "正在下载网易云音乐安装包"
-wget http://d1.music.126.net/dmusic/netease-cloud-music_1.1.0_amd64_ubuntu.deb
+wget http://d1.music.126.net/dmusic/netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb
 
 echo "正在安装网易云音乐"
 sudo apt install libcanberra-gtk-module -y
 sudo dpkg -i netease-cloud-music_1.1.0_amd64_ubuntu.deb
 sudo apt -f install -y
-sudo rm netease-cloud-music_1.1.0_amd64_ubuntu.deb
-
-#echo "正在配置网易云音乐"
-#sudo gedit /usr/share/applications/netease-cloud-music.desktop
-#Exec=netease-cloud-music %U   
-#Exec=netease-cloud-music --no-sandbox %U
-#netease-cloud-music
-#cd  ~/.cache
-#sudo chmod -R 777 netease-cloud-music
+sudo rm netease-*.deb
 
 echo "正在安装 tweak-tool"
 sudo apt-get install unity-tweak-tool gnome-tweak-tool gnome-shell-extensions chrome-gnome-shell gnome-session gtk2-engines-pixbuf libxml2-utils -y
