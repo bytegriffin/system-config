@@ -1,30 +1,44 @@
-# /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
-# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
+# /etc/profile
 
-if [ "${PS1-}" ]; then
-  if [ "${BASH-}" ] && [ "$BASH" != "/bin/sh" ]; then
-    # The file bash.bashrc already sets the default PS1.
-    # PS1='\h:\w\$ '
-    if [ -f /etc/bash.bashrc ]; then
-      . /etc/bash.bashrc
-    fi
-  else
-    if [ "`id -u`" -eq 0 ]; then
-      PS1='# '
-    else
-      PS1='$ '
-    fi
-  fi
+# Set our umask
+umask 022
+
+# Append our default paths
+appendpath () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
+appendpath '/usr/local/sbin'
+appendpath '/usr/local/bin'
+appendpath '/usr/bin'
+unset appendpath
+
+export PATH
+
+# Load profiles from /etc/profile.d
+if test -d /etc/profile.d/; then
+	for profile in /etc/profile.d/*.sh; do
+		test -r "$profile" && . "$profile"
+	done
+	unset profile
 fi
 
-if [ -d /etc/profile.d ]; then
-  for i in /etc/profile.d/*.sh; do
-    if [ -r $i ]; then
-      . $i
-    fi
-  done
-  unset i
+# Source global bash config
+if test "$PS1" && test "$BASH" && test -z ${POSIXLY_CORRECT+x} && test -r /etc/bash.bashrc; then
+	. /etc/bash.bashrc
 fi
+
+# Termcap is outdated, old, and crusty, kill it.
+unset TERMCAP
+
+# Man is much better than us at figuring this out
+unset MANPATH
+
 
 export JAVA_HOME=/opt/ide/jdk1.8.0_221
 export JRE_HOME=$JAVA_HOME/jre
@@ -103,3 +117,5 @@ export PATH=$PATH:$PRESTO_HOME/bin
 
 export FLUME_HOME=/opt/ide/flume-1.9.0
 export PATH=$PATH:$FLUME_HOME/bin
+
+
