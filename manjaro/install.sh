@@ -119,6 +119,10 @@ echo "安装scala"
 wget https://downloads.lightbend.com/scala/2.13.0/scala-2.13.0.tgz
 sudo mv scala*.tgz /opt/ide && tar xzf /opt/ide/scala*.tgz -C /opt/ide && rm -rf /opt/ide/scala*.tgz
 
+echo "正在安装VSCode"
+wget https://vscode.cdn.azure.cn/stable/3db7e09f3b61f915d03bbfa58e258d6eee843f35/code-stable-1567547931.tar.gz
+sudo mv code*.tar.gz /opt/ && tar xzf /opt/ide/code*.tar.gz -C /opt/ide && rm -rf /opt/ide/code*.tar.gz
+
 echo "清除系统中无用的包"
 sudo pacman -R --noconfirm $(pacman -Qdtq)
 sudo pacman -Scc

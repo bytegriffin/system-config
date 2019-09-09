@@ -225,7 +225,7 @@ sudo apt-get install docker-ce -y
 echo "正在安装nodejs"
 sudo apt-get install python-software-properties
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt-get install -y nodejs npm
 sudo npm install -g nrm
 nrm ls
 nrm use taobao
@@ -259,6 +259,12 @@ wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse
 sudo dpkg -i mongodb-*.deb
 sudo apt -f install -y
 sudo rm mongodb-*.deb
+
+echo "正在安装VSCode"
+wget https://vscode.cdn.azure.cn/stable/3db7e09f3b61f915d03bbfa58e258d6eee843f35/code_1.38.0-1567547996_amd64.deb
+sudo dpkg -i code-*.deb
+sudo apt -f install -y
+sudo rm code-*.deb
 
 echo "正在清理安装过程中产生的冗余软件包"
 sudo apt autoremove --purge -y
