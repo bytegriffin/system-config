@@ -47,7 +47,7 @@ inxi -G
 sudo mhwd -a pci nonfree 0300
 
 echo "安装常用软件"
-yay -S  --noconfirm google-chrome netease-cloud-music wps-office ttf-wps-fonts typora GitKraken debtap thefuck arc-gtk-theme clang make cmake gdb visual-studio-code-bin wqy-microhei wqy-zenhei vsftpd gnupg tmux meld htop putty subversion nload iftop tree ca-certificates exfat-utils ntfs-3g gconf-editor dconf-editor bleachbit smplayer smplayer-themes ffmpeg unity-tweak-tool gnome-tweak-tool gnome-shell-extensions chrome-gnome-shell gnome-session unrar guake rar unzip p7zip preload gcc gcc5 gcc6 gcc7 datagrip postman-bin mame nmap zmap yarn  deepin-screenshot deepin.com.qq.im deepin.com.qq.office
+yay -S  --noconfirm google-chrome netease-cloud-music wps-office ttf-wps-fonts typora GitKraken debtap thefuck arc-gtk-theme clang make cmake gdb visual-studio-code-bin wqy-microhei wqy-zenhei vsftpd gnupg gnupg2 tmux meld htop putty subversion nload iftop tree ca-certificates exfat-utils ntfs-3g gconf-editor dconf-editor bleachbit smplayer smplayer-themes ffmpeg unity-tweak-tool gnome-tweak-tool gnome-shell-extensions chrome-gnome-shell gnome-session unrar guake rar unzip p7zip preload gcc gcc5 gcc6 gcc7 datagrip postman-bin mame nmap zmap yarn  deepin-screenshot deepin.com.qq.im deepin.com.qq.office
 echo "更新debtap"
 sudo debtap -u
 

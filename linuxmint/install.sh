@@ -60,7 +60,7 @@ echo "安装kolour画图"
 sudo apt-get install kolourpaint4 -y 
 
 echo "正在安装常用软件"
-sudo apt-get install wget ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload iptraf iftop tree apt-transport-https ca-certificates software-properties-common -y
+sudo apt-get install wget ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload iptraf iftop tree apt-transport-https ca-certificates software-properties-common gnupg2 -y
 
 echo "正在安装exfat,ntfs"
 sudo apt-get install exfat-fuse exfat-utils ntfs-3g -y
@@ -157,11 +157,11 @@ curl -sLf https://spacevim.org/cn/install.sh | bash
 
 echo "正在安装wine"
 sudo dpkg --add-architecture i386 
-wget -nc https://dl.winehq.org/wine-builds/winehq.key
-sudo apt-key add winehq.key
-sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
-sudo apt-get update -y
-sudo apt-get install --install-recommends winehq-stable
+wget -nc https://dl.winehq.org/wine-builds/Release.key
+sudo apt-key add Release.key
+sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+sudo apt update -y
+sudo apt install --install-recommends winehq-stable -y
 
 echo "正在安装gcc和g++"
 sudo apt-get install gcc-5 gcc-5-multilib -y

@@ -179,12 +179,13 @@ echo "正在安装SpaceVim"
 curl -sLf https://spacevim.org/cn/install.sh | bash
 
 echo "正在安装wine"
-sudo dpkg --add-architecture i386 
-wget -nc https://dl.winehq.org/wine-builds/winehq.key
-sudo apt-key add winehq.key
-sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
-sudo apt-get update -y
-sudo apt-get install --install-recommends winehq-stable
+sudo dpkg --add-architecture i386
+wget -nc https://dl.winehq.org/wine-builds/Release.key
+sudo apt-key add Release.key
+sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+sudo apt update -y
+sudo apt install --install-recommends winehq-stable -y
+
 
 echo "正在安装gcc和g++"
 sudo apt-get install gcc-5 gcc-5-multilib -y
