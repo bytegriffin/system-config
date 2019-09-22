@@ -60,7 +60,7 @@ echo "安装kolour画图"
 sudo apt-get install kolourpaint4 -y 
 
 echo "正在安装常用软件"
-sudo apt-get install wget ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload iptraf iftop tree apt-transport-https ca-certificates software-properties-common gnupg2 -y
+sudo apt-get install wget ctags curl vsftpd gnupg2 tmux meld htop putty subversion nload iptraf iftop tree apt-transport-https ca-certificates software-properties-common gnupg2 tcl -y
 
 echo "正在安装exfat,ntfs"
 sudo apt-get install exfat-fuse exfat-utils ntfs-3g -y
@@ -190,6 +190,12 @@ sudo update-alternatives --config javac
 echo "正在安装golang"
 wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
 sudo mv go*.tar.gz /opt/ide/ && tar xzf /opt/ide/go*.tar.gz -C /opt/ide && rm -rf /opt/ide/go*.tar.gz
+
+echo "正在安装redis"
+wget http://download.redis.io/releases/redis-5.0.5.tar.gz
+sudo mv redis*.tar.gz /opt/ide/ && tar xzf /opt/ide/redis*.tar.gz -C /opt/ide && rm -rf /opt/ide/redis*.tar.gz
+cd /opt/ide/redis-*
+make
 
 echo "正在安装python3 pip"
 sudo apt-get install python3 python-pip python3-pip -y

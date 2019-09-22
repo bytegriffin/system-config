@@ -93,7 +93,7 @@ export MONGODB_HOME=/opt/ide/mongodb
 export PATH=$PATH:$MONGODB_HOME/bin
 
 export REDIS_HOME=/opt/ide/redis-5.0.5
-export PATH=$PATH:$REDIS_HOME/bin
+export PATH=$PATH:$REDIS_HOME/src
 
 export FLINK_HOME=/opt/ide/flink-1.9.0
 export PATH=$PATH:$FLINK_HOME/bin

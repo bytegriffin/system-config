@@ -22,7 +22,7 @@ echo "删除没用的软件"
 sudo pacman -Rsc --noconfirm firefox hexchat pidgin
 
 echo "安装常用软件"
-sudo pacman -S --noconfirm yay yaourt base-devel flashplugin vim gedit albert autojump foxitreader vlc mpv filezilla gcc make pkg-config libv4l numix-icon-theme virtualgl lib32-virtualgl lib32-primus primus 
+sudo pacman -S --noconfirm yay yaourt base-devel flashplugin vim gedit albert autojump foxitreader vlc mpv filezilla gcc make pkg-config libv4l numix-icon-theme virtualgl lib32-virtualgl lib32-primus primus tcl
 
 echo "安装Gedit"
 sudo pacman -S --noconfirm gedit
@@ -82,6 +82,12 @@ sudo archlinux-java set java-8-jdk
 echo "安装Golang"
 wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
 sudo mv go*.tar.gz /opt/ide/ && tar xzf /opt/ide/go*.tar.gz -C /opt/ide && rm -rf /opt/ide/go*.tar.gz
+
+echo "正在安装redis"
+wget http://download.redis.io/releases/redis-5.0.5.tar.gz
+sudo mv redis*.tar.gz /opt/ide/ && tar xzf /opt/ide/redis*.tar.gz -C /opt/ide && rm -rf /opt/ide/redis*.tar.gz
+cd /opt/ide/redis-*
+make
 
 echo "安装python"
 yay -S --needed --noconfirm python python3 python-pip python2-pip python-setuptools python2-setuptools python-virtualenv python2-virtualenv python-virtualenvwrapper
