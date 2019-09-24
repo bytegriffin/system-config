@@ -112,6 +112,15 @@ sudo gpasswd -a bytegriffin docker
 sudo systemctl enable docker
 sudo systemctl start docker
 
+echo "正在设置daocloud.io，打开https://www.daocloud.io/mirror，可以看到具体地址"
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+    "registry-mirrors": ["http://f1361db2.m.daocloud.io"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
 echo "安装nodejs"
 yay -S --noconfirm nodejs npm 
 sudo npm install -g nrm

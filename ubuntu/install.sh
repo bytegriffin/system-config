@@ -251,6 +251,15 @@ sudo add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/ubu
 sudo apt install aufs-tools cgroupfs-mount pigz
 sudo apt-get install docker-ce -y
 
+echo "正在设置daocloud.io，打开https://www.daocloud.io/mirror，可以看到具体地址"
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+    "registry-mirrors": ["http://f1361db2.m.daocloud.io"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
 echo "正在安装nodejs"
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs npm
