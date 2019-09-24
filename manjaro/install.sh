@@ -74,20 +74,19 @@ plugins=(
 source  ~/.zshrc
 
 echo "安装jdk1.8"
-wget https://download.oracle.com/otn/java/jdk/8u221-b11/230deb18db3e4014bb8e3e8324f81b43/jdk-8u221-linux-x64.tar.gz?AuthParam=1567932412_4974c27922bb6e32c4db63046640cad8
-sudo mv jdk-* /opt/ide/jdk-linux-x64.tar.gz && tar xzf /opt/ide/jdk-*.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-linux-x64.tar.gz
+wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u221-linux-x64.tar.gz
+sudo tar xzf jdk-*.tar.gz -C /opt/ide && rm -rf jdk-*.tar.gz
 sudo archlinux-java status
 sudo archlinux-java set java-8-jdk
 
 echo "安装Golang"
 wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
-sudo mv go*.tar.gz /opt/ide/ && tar xzf /opt/ide/go*.tar.gz -C /opt/ide && rm -rf /opt/ide/go*.tar.gz
+sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 
 echo "正在安装redis"
 wget http://download.redis.io/releases/redis-5.0.5.tar.gz
-sudo mv redis*.tar.gz /opt/ide/ && tar xzf /opt/ide/redis*.tar.gz -C /opt/ide && rm -rf /opt/ide/redis*.tar.gz
-cd /opt/ide/redis-*
-make
+sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
+cd /opt/ide/redis-* && make
 
 echo "安装python"
 yay -S --needed --noconfirm python python3 python-pip python2-pip python-setuptools python2-setuptools python-virtualenv python2-virtualenv python-virtualenvwrapper
@@ -102,7 +101,7 @@ mysql> FLUSH PRIVILEGES;
 
 echo "安装dbeaver"
 wget https://dbeaver.io/files/6.1.5/dbeaver-ce-6.1.5-linux.gtk.x86_64.tar.gz
-sudo mv dbeaver*.tar.gz /opt/ && tar xzf /opt/ide/dbeaver*.tar.gz -C /opt/ide && rm -rf /opt/ide/dbeaver*.tar.gz
+sudo tar xzf dbeaver*.tar.gz -C /opt/ide && rm -rf dbeaver*.tar.gz
 
 echo "安装Virtualbox"
 yay -S --noconfirm virtualbox virtualbox-ext-oracle linux414-virtualbox-host-modules
@@ -123,11 +122,11 @@ sudo npm install -g gulp
 
 echo "安装scala"
 wget https://downloads.lightbend.com/scala/2.13.0/scala-2.13.0.tgz
-sudo mv scala*.tgz /opt/ide && tar xzf /opt/ide/scala*.tgz -C /opt/ide && rm -rf /opt/ide/scala*.tgz
+sudo tar xzf /opt/ide/scala*.tgz -C /opt/ide && rm -rf scala*.tgz
 
 echo "正在安装VSCode"
 wget https://vscode.cdn.azure.cn/stable/3db7e09f3b61f915d03bbfa58e258d6eee843f35/code-stable-1567547931.tar.gz
-sudo mv code*.tar.gz /opt/ && tar xzf /opt/ide/code*.tar.gz -C /opt/ide && rm -rf /opt/ide/code*.tar.gz
+sudo tar xzf /opt/ide/code*.tar.gz -C /opt/ide && rm -rf code*.tar.gz
 
 echo "清除系统中无用的包"
 sudo pacman -R --noconfirm $(pacman -Qdtq)

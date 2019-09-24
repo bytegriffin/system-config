@@ -181,21 +181,20 @@ sudo update-alternatives --config g++
 
 echo "正在安装jdk1.8"
 wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u221-linux-x64.tar.gz
-sudo mv jdk-* /opt/ide/jdk-linux-x64.tar.gz && tar xzf /opt/ide/jdk-*.tar.gz -C /opt/ide && rm -rf /opt/ide/jdk-linux-x64.tar.gz
-sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_211/bin/java 300  
-sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_211/bin/javac 300
+sudo tar xzf jdk-*.tar.gz -C /opt/ide && rm -rf jdk-*.tar.gz
+sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_221/bin/java 300  
+sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_221/bin/javac 300
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
 echo "正在安装golang"
 wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
-sudo mv go*.tar.gz /opt/ide/ && tar xzf /opt/ide/go*.tar.gz -C /opt/ide && rm -rf /opt/ide/go*.tar.gz
+sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 
 echo "正在安装redis"
 wget http://download.redis.io/releases/redis-5.0.5.tar.gz
-sudo mv redis*.tar.gz /opt/ide/ && tar xzf /opt/ide/redis*.tar.gz -C /opt/ide && rm -rf /opt/ide/redis*.tar.gz
-cd /opt/ide/redis-*
-make
+sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
+cd /opt/ide/redis-* && make
 
 echo "正在安装python3 pip"
 sudo apt-get install python3 python-pip python3-pip -y
@@ -217,7 +216,10 @@ sudo apt update
 sudo rm -rf dbeaver-*.deb
 
 echo "正在安装Virtualbox"
-sudo apt-get install virtualbox
+wget https://download.virtualbox.org/virtualbox/6.0.12/virtualbox-6.0_6.0.12-133076~Ubuntu~bionic_amd64.deb
+sudo dpkg -i virtualbox-*.deb
+sudo apt update
+sudo rm -rf virtualbox-*.deb
 
 echo "正在安装docker"
 sudo apt-get remove docker docker-engine docker.io
@@ -256,7 +258,7 @@ sudo apt install cubic
 
 echo "正在安装scala"
 wget https://downloads.lightbend.com/scala/2.13.0/scala-2.13.0.tgz
-sudo mv scala*.tgz /opt/ide && tar xzf /opt/ide/scala*.tgz -C /opt/ide && rm -rf /opt/ide/scala*.tgz
+sudo tar xzf scala*.tgz -C /opt/ide && rm -rf scala*.tgz
 
 echo "正在安装mongodb"
 wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.0_amd64.deb
