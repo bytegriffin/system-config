@@ -15,11 +15,6 @@ sudo apt remove --purge firefox aisleriot gnome-mahjongg gnome-mines gnome-sudok
 echo "正在安装gdebi软件包安装程序"
 sudo apt install gdebi -y
 
-echo "将apt-get更换为apt-fast"
-git clone https://github.com/ilikenwf/apt-fast.git
-cd apt-fast
-sudo ./quick-install.sh
-
 echo "正在安装fcitx输入法"
 sudo apt-get install fcitx-bin fcitx-table fcitx-pinyin fcitx-config-common fcitx-config-gtk -y 
 
@@ -41,6 +36,12 @@ echo "正在安装git"
 sudo apt install git -y
 git config --global user.name "bytegriffin"
 git config --global user.email "bytegriffin@126.com"
+git config --global core.editor vim
+
+echo "将apt-get更换为apt-fast"
+git clone https://github.com/ilikenwf/apt-fast.git
+cd apt-fast
+sudo ./quick-install.sh
 
 echo "正在安装 oh-my-zsh"
 sudo apt-get install zsh -y
