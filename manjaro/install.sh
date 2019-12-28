@@ -74,7 +74,7 @@ plugins=(
 source  ~/.zshrc
 
 echo "安装jdk1.8"
-wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u221-linux-x64.tar.gz
+wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u231-linux-x64.tar.gz
 sudo tar xzf jdk-*.tar.gz -C /opt/ide && rm -rf jdk-*.tar.gz
 sudo archlinux-java status
 sudo archlinux-java set java-8-jdk
@@ -84,7 +84,7 @@ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
 sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 
 echo "正在安装redis"
-wget http://download.redis.io/releases/redis-5.0.5.tar.gz
+wget http://download.redis.io/releases/redis-5.0.7.tar.gz
 sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
 cd /opt/ide/redis-* && make
 
@@ -100,7 +100,7 @@ mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'r
 mysql> FLUSH PRIVILEGES;
 
 echo "安装dbeaver"
-wget https://dbeaver.io/files/6.1.5/dbeaver-ce-6.1.5-linux.gtk.x86_64.tar.gz
+wget https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
 sudo tar xzf dbeaver*.tar.gz -C /opt/ide && rm -rf dbeaver*.tar.gz
 
 echo "安装Virtualbox"
@@ -134,7 +134,7 @@ wget https://downloads.lightbend.com/scala/2.13.0/scala-2.13.0.tgz
 sudo tar xzf /opt/ide/scala*.tgz -C /opt/ide && rm -rf scala*.tgz
 
 echo "正在安装VSCode"
-wget https://vscode.cdn.azure.cn/stable/3db7e09f3b61f915d03bbfa58e258d6eee843f35/code-stable-1567547931.tar.gz
+wget https://vscode.cdn.azure.cn/stable/26076a4de974ead31f97692a0d32f90d735645c0/code-stable-1576682093.tar.gz
 sudo tar xzf /opt/ide/code*.tar.gz -C /opt/ide && rm -rf code*.tar.gz
 
 echo "清除系统中无用的包"

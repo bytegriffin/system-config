@@ -24,11 +24,11 @@ echo "正在安装fcitx输入法"
 sudo apt-get install fcitx-bin fcitx-table fcitx-pinyin fcitx-config-common fcitx-config-gtk -y 
 
 echo "正在下载搜狗输入法安装包"
-wget http://cdn2.ime.sogou.com/dl/index/1524572264/sogoupinyin_2.2.0.0108_amd64.deb
+wget http://cdn2.ime.sogou.com/dl/index/1571302197/sogoupinyin_2.3.1.0112_amd64.deb
 
 echo "正在安装搜狗输入法"
-sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
-sudo rm sogoupinyin_2.2.0.0108_amd64.deb
+sudo dpkg -i sogoupinyin_*_amd64.deb
+sudo rm sogoupinyin_*_amd64.deb
 
 echo "正在安装Vim和Ntfs-config vim-youcompeteme"
 sudo apt install vim vim-nox vim-youcompleteme -y
@@ -203,19 +203,19 @@ sudo update-alternatives --config gcc
 sudo update-alternatives --config g++
 
 echo "正在安装jdk1.8"
-wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u221-linux-x64.tar.gz
+wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u231-linux-x64.tar.gz
 sudo tar xzf jdk-*.tar.gz -C /opt/ide && rm -rf jdk-*.tar.gz
-sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_221/bin/java 300  
-sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_221/bin/javac 300
+sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_231/bin/java 300  
+sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_231/bin/javac 300
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
 echo "正在安装golang"
-wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
 sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 
 echo "正在安装redis"
-wget http://download.redis.io/releases/redis-5.0.5.tar.gz
+wget http://download.redis.io/releases/redis-5.0.7.tar.gz
 sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
 cd /opt/ide/redis-* && make
 
@@ -261,8 +261,8 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 
 echo "正在安装nodejs"
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs npm
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
 sudo npm install -g nrm
 nrm ls
 nrm use taobao
@@ -292,12 +292,12 @@ wget https://downloads.lightbend.com/scala/2.13.0/scala-2.13.0.tgz
 sudo tar xzf scala*.tgz -C /opt/ide && rm -rf scala*.tgz
 
 echo "正在安装mongodb"
-wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.0_amd64.deb
+wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.2_amd64.deb
 sudo dpkg -i mongodb-*.deb
 sudo rm mongodb-*.deb
 
 echo "正在安装VSCode"
-wget https://vscode.cdn.azure.cn/stable/3db7e09f3b61f915d03bbfa58e258d6eee843f35/code_1.38.0-1567547996_amd64.deb
+wget https://vscode.cdn.azure.cn/stable/26076a4de974ead31f97692a0d32f90d735645c0/code_1.41.1-1576681836_amd64.deb
 sudo dpkg -i code*.deb
 sudo apt -f install -y
 sudo rm code*.deb
