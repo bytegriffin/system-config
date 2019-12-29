@@ -48,6 +48,17 @@ export PATH=$JAVA_HOME/bin:$PATH
 export ANDROID_SDK_HOME=/opt/ide/android-sdk
 export PATH=$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/tools:$PATH
 
+export FLUTTER_HOME=/opt/ide/flutter
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+export PATH=$FLUTTER_HOME/bin:$PATH
+
+export GOROOT=/opt/ide/go/
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/opt/workspace/gopath
+export  GO111MODULE=on
+export GOPROXY=https://goproxy.io,direct
+
 export M2_HOME=/opt/ide/apache-maven-3.6.3
 export MAVEN_OPTS="-Xms256m -Xmx512m"
 export PATH=$M2_HOME/bin:$PATH

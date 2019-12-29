@@ -79,6 +79,10 @@ sudo tar xzf jdk-*.tar.gz -C /opt/ide && rm -rf jdk-*.tar.gz
 sudo archlinux-java status
 sudo archlinux-java set java-8-jdk
 
+echo "正在安装flutter"
+wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.12.13+hotfix.5-stable.tar.xz
+sudo tar xf flutter_*.tar.xz -C /opt/ide && rm -rf flutter_*.tar.xz
+
 echo "安装Golang"
 wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
 sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz

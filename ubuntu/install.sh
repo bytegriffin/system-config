@@ -211,6 +211,10 @@ sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_231/bi
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
+echo "正在安装flutter"
+wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.12.13+hotfix.5-stable.tar.xz
+sudo tar xf flutter_*.tar.xz -C /opt/ide && rm -rf flutter_*.tar.xz
+
 echo "正在安装golang"
 wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
 sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
