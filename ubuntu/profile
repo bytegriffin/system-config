@@ -26,7 +26,7 @@ if [ -d /etc/profile.d ]; then
   unset i
 fi
 
-export JAVA_HOME=/opt/ide/jdk1.8.0_231
+export JAVA_HOME=/opt/ide/jdk1.8.0_251
 export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$JAVA_HOME/bin:$PATH
@@ -49,13 +49,13 @@ export M2_HOME=/opt/ide/apache-maven-3.6.3
 export MAVEN_OPTS="-Xms256m -Xmx512m"
 export PATH=$M2_HOME/bin:$PATH
 
-export GRADLE_HOME=/opt/ide/gradle-6.0.1
+export GRADLE_HOME=/opt/ide/gradle-6.3
 export PATH=$GRADLE_HOME/bin:$PATH
 
-export TOMCAT_HOME=/opt/ide/apache-tomcat-9.0.30
+export TOMCAT_HOME=/opt/ide/apache-tomcat-9.0.34
 export PATH=$TOMCAT_HOME/bin:$PATH
 
-export PROTOC_HOME=/opt/ide/protoc-3.11.2
+export PROTOC_HOME=/opt/ide/protoc-3.11.4
 export PATH=$PROTOC_HOME/bin:$PATH
 
 #protobuf
@@ -76,7 +76,7 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR"
 export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native/:$LD_LIBRARY_PATH
 
-export HBASE_HOME=/opt/ide/hbase-2.2.2
+export HBASE_HOME=/opt/ide/hbase-2.2.4
 export PATH=$HBASE_HOME/bin:$PATH
 
 export HIVE_HOME=/opt/ide/hive-3.1.2
@@ -103,7 +103,7 @@ export PATH=$PATH:$DRILL_HOME/bin
 export MONGODB_HOME=/opt/ide/mongodb
 export PATH=$PATH:$MONGODB_HOME/bin
 
-export REDIS_HOME=/opt/ide/redis-5.0.7
+export REDIS_HOME=/opt/ide/redis-5.0.8
 export PATH=$PATH:$REDIS_HOME/src
 
 export FLINK_HOME=/opt/ide/flink-1.9.1
