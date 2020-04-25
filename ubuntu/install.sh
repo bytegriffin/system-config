@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Ubuntu 18.04 配置脚本 v2018.8.10"
+echo "Ubuntu 20.04 配置脚本 v2020.4.25"
 echo "--------------------------------------------------"
 
 echo "请选择速度最快的那个软件源"
@@ -204,23 +204,23 @@ sudo update-alternatives --config gcc
 sudo update-alternatives --config g++
 
 echo "正在安装jdk1.8"
-wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u231-linux-x64.tar.gz
+wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u251-linux-x64.tar.gz
 sudo tar xzf jdk-*.tar.gz -C /opt/ide && rm -rf jdk-*.tar.gz
-sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_231/bin/java 300  
-sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_231/bin/javac 300
+sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_251/bin/java 300  
+sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_251/bin/javac 300
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
 echo "正在安装flutter"
-wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.12.13+hotfix.5-stable.tar.xz
+wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.12.13+hotfix.9-stable.tar.xz
 sudo tar xf flutter_*.tar.xz -C /opt/ide && rm -rf flutter_*.tar.xz
 
 echo "正在安装golang"
-wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz
 sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 
 echo "正在安装redis"
-wget http://download.redis.io/releases/redis-5.0.7.tar.gz
+wget http://download.redis.io/releases/redis-5.0.8.tar.gz
 sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
 cd /opt/ide/redis-* && make
 
@@ -231,7 +231,7 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
 sudo apt-get install python3-setuptools
 
 echo "正在安装Mysql8 注意:选择采用5.x的加密方式"
-wget https://repo.mysql.com/mysql-apt-config_0.8.9-1_all.deb
+wget https://repo.mysql.com/mysql-apt-config_0.8.15-1_all.deb
 sudo dpkg -i mysql-*.deb
 sudo apt update
 sudo apt-get install mysql-server -y
@@ -266,7 +266,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 
 echo "正在安装nodejs"
-curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install -g nrm
 nrm ls
@@ -293,16 +293,16 @@ sudo apt update
 sudo apt install cubic
 
 echo "安装scala"
-wget https://downloads.lightbend.com/scala/2.13.0/scala-2.13.0.tgz
+wget https://downloads.lightbend.com/scala/2.13.2/scala-2.13.2.tgz
 sudo tar xzf scala*.tgz -C /opt/ide && rm -rf scala*.tgz
 
 echo "正在安装mongodb"
-wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.2_amd64.deb
+wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.6_amd64.deb
 sudo dpkg -i mongodb-*.deb
 sudo rm mongodb-*.deb
 
 echo "正在安装VSCode"
-wget https://vscode.cdn.azure.cn/stable/26076a4de974ead31f97692a0d32f90d735645c0/code_1.41.1-1576681836_amd64.deb
+wget https://vscode.cdn.azure.cn/stable/ff915844119ce9485abfe8aa9076ec76b5300ddd/code_1.44.2-1587059832_amd64.deb
 sudo dpkg -i code*.deb
 sudo apt -f install -y
 sudo rm code*.deb
