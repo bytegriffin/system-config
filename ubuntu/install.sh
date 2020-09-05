@@ -284,6 +284,25 @@ sudo dpkg -i code*.deb && rm code*.deb
 echo "关闭错误报告"
 sudo sed -i 's/enabled=1/enabled=0/' /etc/default/apport && sudo service apport restart
 
+echo "正在安装Dukto"
+sudo add-apt-repository ppa:rock-core/qt4
+sudo apt update
+sudo apt install libqtcore4
+wget http://ftp.lysator.liu.se/pub/opensuse/repositories/home:/colomboem/xUbuntu_16.04/amd64/dukto_6.0-1_amd64.deb
+sudo dpkg -i dukto_*.deb && rm code*.deb
+
+echo "正在安装Listen1"
+wget https://github.com/listen1/listen1_desktop/releases/download/v2.12.3/listen1_2.12.3_linux_amd64.deb
+sudo dpkg -i listen1*.deb && rm listen1*.deb
+
+echo "正在安装Winws软件"
+wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
+sudo apt-get install deepin.com.wechat
+sudo apt-get install deepin.com.qq.im
+sudo apt-get install deepin.com.baidu.pan
+sudo apt-get install deepin.com.thunderspeed
+sudo apt-get install deepin.cn.com.winrar
+
 echo "正在清理安装过程中产生的冗余软件包"
 sudo apt autoremove --purge -y
 sudo apt autoclean
