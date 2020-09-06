@@ -46,7 +46,7 @@ sudo ./quick-install.sh
 echo "正在安装 oh-my-zsh"
 sudo apt-get install zsh -y
 #面的命令如果报“拒绝连接”的错误，可以试着去https://site.ip138.com/ ，输入raw.githubusercontent.com 进行查询,
-#然后执行 sudo vi /etc/hos  把151.101.108.133 raw.githubusercontent.com添加进去
+#然后执行 sudo vi /etc/hosts  把151.101.108.133 raw.githubusercontent.com添加进去
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s /bin/zsh
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -91,16 +91,13 @@ sudo apt install bleachbit -y
 
 echo "正在下载Google Chrome安装包"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
-echo "正在替换浏览器为Google Chrome"
 sudo apt install libappindicator1 -y
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo rm google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb && rm google-chrome*.deb
 
 echo "正在安装 ttf-mscorefonts-installer"
 wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo apt-get purge ttf-mscorefonts-installer -y
-sudo apt install ./ttf-mscorefonts-installer_3.6_all.deb
+sudo apt dpkg -i ttf-mscorefonts-installer_*.deb
 
 echo "正在安装文泉驿、MS TrueType字体"
 sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
@@ -130,8 +127,7 @@ sudo apt-get install ffmpeg -y
 echo "正在下载网易云音乐安装包"
 wget http://d1.music.126.net/dmusic/netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb
 sudo apt install libcanberra-gtk-module -y
-sudo dpkg -i netease-cloud-music_*.deb
-sudo rm netease-*.deb
+sudo dpkg -i netease-cloud-music_*.deb && rm netease-*.deb
 
 echo "正在安装arc-theme主题"
 sudo apt install arc-theme -y
@@ -148,13 +144,11 @@ sudo apt-get install qemu-kvm bridge-utils -y
 echo "正在安装Xtreme Download Managert下载工具"
 wget https://github.com/subhra74/xdm/releases/download/7.2.11/xdm-setup-7.2.11.tar.xz
 tar -xvf xdm-*.tar.xz
-sudo ./install.sh
-sudo rm -rf xdm-*.tar.xz install.sh readme.txt
+sudo ./install.sh && rm -rf xdm-*.tar.xz install.sh readme.txt
 
 echo "正在安装Motrix下载工具"
 wget https://github.com/agalwood/Motrix/releases/download/v1.5.15/Motrix_1.5.15_amd64.deb
-sudo dpkg -i Motrix*.deb
-sudo rm -rf Motrix*
+sudo dpkg -i Motrix*.deb && rm -rf Motrix*
 
 echo "正在安装kazam录屏软件"
 sudo apt install kazam -y
@@ -201,10 +195,9 @@ sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 echo "正在安装redis"
 wget http://download.redis.io/releases/redis-6.0.7.tar.gz
 sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
-cd /opt/ide/redis-* && make
 
 echo "正在安装python3 pip"
-sudo apt-get install python3 python3-pip -y
+sudo apt-get install python python3 python3-pip -y
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
 sudo apt-get install python3-setuptools
@@ -275,7 +268,8 @@ sudo dpkg -i mongodb-*.deb && rm mongodb-*.deb
 
 echo "正在安装Etcd"
 wget https://github.com/etcd-io/etcd/releases/download/v3.4.13/etcd-v3.4.13-linux-amd64.tar.gz
-sudo tar xzf etcd*.tar.gz -C /opt/ide && mv etcd-* etcd && rm etcd-*.tar.gz
+sudo tar xzf etcd*.tar.gz -C /opt/ide && rm etcd-*.tar.gz
+mv /opt/ide/etcd* /opt/ide/etcd
 
 echo "正在安装VSCode"
 wget https://vscode.cdn.azure.cn/stable/a0479759d6e9ea56afa657e454193f72aef85bd0/code_1.48.2-1598353430_amd64.deb
@@ -287,7 +281,7 @@ sudo sed -i 's/enabled=1/enabled=0/' /etc/default/apport && sudo service apport 
 echo "正在安装Dukto"
 sudo add-apt-repository ppa:rock-core/qt4
 sudo apt update
-sudo apt install libqtcore4
+sudo apt install libqtcore4 -y
 wget http://ftp.lysator.liu.se/pub/opensuse/repositories/home:/colomboem/xUbuntu_16.04/amd64/dukto_6.0-1_amd64.deb
 sudo dpkg -i dukto_*.deb && rm code*.deb
 
@@ -307,5 +301,4 @@ echo "正在清理安装过程中产生的冗余软件包"
 sudo apt autoremove --purge -y
 sudo apt autoclean
 sudo apt clean
-sudo apt autoremove
 
