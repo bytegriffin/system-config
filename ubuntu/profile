@@ -55,7 +55,7 @@ export PATH=$GRADLE_HOME/bin:$PATH
 export TOMCAT_HOME=/opt/ide/apache-tomcat-9.0.37
 export PATH=$TOMCAT_HOME/bin:$PATH
 
-export PROTOC_HOME=/opt/ide/protoc-3.13.0
+export PROTOC_HOME=/opt/ide/protoc
 export PATH=$PROTOC_HOME/bin:$PATH
 
 #protobuf

@@ -150,6 +150,10 @@ sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal mai
 sudo apt update -y
 sudo apt install --install-recommends winehq-stable
 
+echo "正在安装protoc"
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
+unzip -n protoc-*.zip -d /opt/ide/protoc && rm -rf protoc-*.zip
+
 echo "正在安装gcc和g++"
 sudo apt install gcc-7 g++-7 gcc-8 g++-8 gcc-9 g++-9 gcc-10 g++-10
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100
