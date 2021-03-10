@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cho "Ubuntu 20.04.1 配置脚本 v2020.9.5"
+cho "Ubuntu 20.04.2 配置脚本 v2021.3.10"
 echo "--------------------------------------------------"
 
 echo "请选择速度最快的那个软件源"
@@ -18,12 +18,9 @@ sudo apt install gdebi -y
 echo "正在安装fcitx输入法"
 sudo apt-get install fcitx-bin fcitx-table fcitx-pinyin fcitx-config-common fcitx-config-gtk -y 
 
-echo "正在下载搜狗输入法安装包"
+echo "正在下载并安装搜狗输入法"
 wget http://cdn2.ime.sogou.com/dl/index/1571302197/sogoupinyin_2.3.1.0112_amd64.deb
-
-echo "正在安装搜狗输入法"
-sudo dpkg -i sogoupinyin_*_amd64.deb
-sudo rm sogoupinyin_*_amd64.deb
+sudo dpkg -i sogoupinyin_*_amd64.deb && rm sogoupinyin_*_amd64.deb
 
 echo "正在安装Vim和Ntfs-config vim-youcompeteme"
 sudo apt install vim vim-nox vim-youcompleteme -y
@@ -38,20 +35,15 @@ git config --global user.name "bytegriffin"
 git config --global user.email "bytegriffin@126.com"
 git config --global core.editor vim
 
-echo "将apt-get更换为apt-fast"
-git clone https://github.com/ilikenwf/apt-fast.git
-cd apt-fast
-sudo ./quick-install.sh
 
 echo "正在安装 oh-my-zsh"
 sudo apt-get install zsh -y
-#面的命令如果报“拒绝连接”的错误，可以试着去https://site.ip138.com/ ，输入raw.githubusercontent.com 进行查询,
+#上面的命令如果报“拒绝连接”的错误，可以试着去https://site.ip138.com/ ，输入raw.githubusercontent.com 进行查询,
 #然后执行 sudo vi /etc/hosts  把151.101.108.133 raw.githubusercontent.com添加进去
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s /bin/zsh
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 sudo vi ~/.zshrc 
-#将ZSH_THEME="ys" plugins 加入 zsh-autosuggestions
+#将ZSH_THEME="ys" ，并且将 plugins=(zsh-autosuggestions)
 source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zshrc
 
@@ -78,10 +70,10 @@ echo "正在安装exfat,ntfs-3g"
 sudo apt-get install exfat-fuse exfat-utils ntfs-3g -y
 
 echo "正在安装gconf-editor,dconf-editor"
-sudo apt install gconf-editor dconf-editor dconf-tools -y
+sudo apt install gconf-editor dconf-editor -y
 
 echo "正在安装alien openssh-client ntfs-config"
-sudo apt install alien openssh-client openssh-server ntfs-config -y
+sudo apt install alien openssh-client openssh-server -y
 
 echo "正在安装新立得软件包管理器"
 sudo apt install synaptic -y
@@ -167,21 +159,20 @@ sudo apt update -y
 sudo apt install --install-recommends winehq-stable
 
 echo "正在安装protoc"
-wget https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.15.5/protoc-3.15.5-linux-x86_64.zip
 unzip -n protoc-*.zip -d /opt/ide/protoc && rm -rf protoc-*.zip
 
 echo "正在安装gcc和g++"
-sudo apt install gcc-7 g++-7 gcc-8 g++-8 gcc-9 g++-9 gcc-10 g++-10
+sudo apt install gcc-8 g++-8 gcc-9 g++-9 gcc-10 g++-10
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 80
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 70
 sudo update-alternatives --config gcc
 sudo update-alternatives --config g++
-sudo apt-get install cmake qtcreator -y
+sudo apt-get install cmake qtcreator clang llvm -y
 
 echo "正在安装jdk1.8"
-wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u261-linux-x64.tar.gz
+wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u281-linux-x64.tar.gz
 sudo tar xzf jdk-*.tar.gz -C /opt/ide && rm -rf jdk-*.tar.gz
 sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_261/bin/java 300
 sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_261/bin/javac 300
@@ -189,15 +180,15 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
 echo "正在安装flutter"
-wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.20.3-stable.tar.xz
+wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.0.1-stable.tar.xz
 sudo tar xf flutter_*.tar.xz -C /opt/ide && rm -rf flutter_*.tar.xz
 
 echo "正在安装golang"
-wget https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
+wget https://golang.google.cn/dl/go1.16.linux-amd64.tar.gz
 sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 
 echo "正在安装redis"
-wget http://download.redis.io/releases/redis-6.0.7.tar.gz
+wget https://download.redis.io/releases/redis-6.2.1.tar.gz
 sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
 
 echo "正在安装python3 pip"
@@ -220,7 +211,7 @@ sudo apt update
 sudo rm -rf dbeaver-*.deb
 
 echo "正在安装Virtualbox"
-wget https://download.virtualbox.org/virtualbox/6.1.14/virtualbox-6.1_6.1.14-140239~Ubuntu~eoan_amd64.deb
+wget https://download.virtualbox.org/virtualbox/6.1.18/virtualbox-6.1_6.1.18-142142~Ubuntu~eoan_amd64.deb
 sudo dpkg -i virtualbox-*.deb
 sudo apt update
 sudo rm -rf virtualbox-*.deb
@@ -293,7 +284,7 @@ echo "正在安装Listen1"
 wget https://github.com/listen1/listen1_desktop/releases/download/v2.12.3/listen1_2.12.3_linux_amd64.deb
 sudo dpkg -i listen1*.deb && rm listen1*.deb
 
-echo "正在安装Winws软件"
+echo "正在安装Wine软件"
 wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
 sudo apt-get install deepin.com.wechat
 sudo apt-get install deepin.com.qq.im
@@ -305,4 +296,6 @@ echo "正在清理安装过程中产生的冗余软件包"
 sudo apt autoremove --purge -y
 sudo apt autoclean
 sudo apt clean
+
+
 
