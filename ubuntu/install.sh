@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cho "Ubuntu 20.04.2 配置脚本 v2021.3.10"
+cho "Ubuntu 21.04 配置脚本 v2021.5.18"
 echo "--------------------------------------------------"
 
 echo "请选择速度最快的那个软件源"
@@ -15,11 +15,16 @@ sudo apt remove --purge firefox aisleriot gnome-mahjongg gnome-mines gnome-sudok
 echo "正在安装gdebi软件包安装程序"
 sudo apt install gdebi -y
 
+echo "正在下载Google Chrome安装包"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install libappindicator1 -y
+sudo dpkg -i google-chrome*.deb && rm google-chrome*.deb
+
 echo "正在安装fcitx输入法"
 sudo apt-get install fcitx-bin fcitx-table fcitx-pinyin fcitx-config-common fcitx-config-gtk -y 
 
 echo "正在下载并安装搜狗输入法"
-wget http://cdn2.ime.sogou.com/dl/index/1571302197/sogoupinyin_2.3.1.0112_amd64.deb
+wget https://ime.sogoucdn.com/dl/index/1612260778/sogoupinyin_2.4.0.3469_amd64.deb
 sudo dpkg -i sogoupinyin_*_amd64.deb && rm sogoupinyin_*_amd64.deb
 
 echo "正在安装Vim和Ntfs-config vim-youcompeteme"
@@ -34,7 +39,6 @@ sudo apt install git -y
 git config --global user.name "bytegriffin"
 git config --global user.email "bytegriffin@126.com"
 git config --global core.editor vim
-
 
 echo "正在安装 oh-my-zsh"
 sudo apt-get install zsh -y
@@ -54,11 +58,11 @@ sudo timedatectl set-ntp true
 sudo apt-get install ntpdate
 sudo ntpdate time.windows.com
 
-echo "安装监控CPU、网络的使用率"
-sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor  
-sudo apt-get update  
-sudo apt-get install indicator-sysmonitor -y
-indicator-sysmonitor &
+#echo "安装监控CPU、网络的使用率"
+#sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor  
+#sudo apt-get update  
+#sudo apt-get install indicator-sysmonitor -y
+#indicator-sysmonitor &
 
 echo "正在安装kolour画图工具"
 sudo apt-get install kolourpaint4 -y 
@@ -70,7 +74,8 @@ echo "正在安装exfat,ntfs-3g"
 sudo apt-get install exfat-fuse exfat-utils ntfs-3g -y
 
 echo "正在安装gconf-editor,dconf-editor"
-sudo apt install gconf-editor dconf-editor -y
+#sudo apt install gconf-editor dconf-editor -y
+sudo apt install dconf-editor -y
 
 echo "正在安装alien openssh-client ntfs-config"
 sudo apt install alien openssh-client openssh-server -y
@@ -81,18 +86,13 @@ sudo apt install synaptic -y
 echo "正在安装BleachBit系统清理工具"
 sudo apt install bleachbit -y
 
-echo "正在下载Google Chrome安装包"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install libappindicator1 -y
-sudo dpkg -i google-chrome*.deb && rm google-chrome*.deb
+#echo "正在安装 ttf-mscorefonts-installer"
+#wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
+#sudo apt-get purge ttf-mscorefonts-installer -y
+#sudo dpkg -i ttf-mscorefonts-installer_*.deb
 
-echo "正在安装 ttf-mscorefonts-installer"
-wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
-sudo apt-get purge ttf-mscorefonts-installer -y
-sudo apt dpkg -i ttf-mscorefonts-installer_*.deb
-
-echo "正在安装文泉驿、MS TrueType字体"
-sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
+#echo "正在安装文泉驿、MS TrueType字体"
+#sudo apt install fonts-wqy-microhei ttf-wqy-microhei -y
 
 echo "正在安装MS TrueType字体"
 sudo apt install ttf-mscorefonts-installer -y
@@ -102,7 +102,7 @@ echo "正在安装font manager字体管理工具"
 sudo apt install font-manager fonts-powerline -y
 
 echo "正在安装Adobe Flash Player"
-sudo apt install pepperflashplugin-nonfree
+sudo apt install pepperflashplugin-nonfree -y
 
 echo "安装解码器"
 sudo apt-get install ubuntu-restricted-extras -y
@@ -133,13 +133,13 @@ sudo apt install unrar guake p7zip-full  p7zip-rar  rar unzip -y
 echo "正在安装kvm,android开发环境"
 sudo apt-get install qemu-kvm bridge-utils -y
 
-echo "正在安装Xtreme Download Managert下载工具"
-wget https://github.com/subhra74/xdm/releases/download/7.2.11/xdm-setup-7.2.11.tar.xz
-tar -xvf xdm-*.tar.xz
-sudo ./install.sh && rm -rf xdm-*.tar.xz install.sh readme.txt
+#echo "正在安装Xtreme Download Managert下载工具"
+#wget https://github.com/subhra74/xdm/releases/download/7.2.11/xdm-setup-7.2.11.tar.xz
+#tar -xvf xdm-*.tar.xz
+#sudo ./install.sh && rm -rf xdm-*.tar.xz install.sh readme.txt
 
 echo "正在安装Motrix下载工具"
-wget https://github.com/agalwood/Motrix/releases/download/v1.5.15/Motrix_1.5.15_amd64.deb
+wget https://dl.moapp.me/https://github.com/agalwood/Motrix/releases/download/v1.6.11/Motrix_1.6.11_amd64.deb
 sudo dpkg -i Motrix*.deb && rm -rf Motrix*
 
 echo "正在安装kazam录屏软件"
@@ -151,44 +151,44 @@ sudo apt-get install preload -y
 echo "正在安装SpaceVim"
 curl -sLf https://spacevim.org/cn/install.sh | bash
 
-echo "正在安装wine"
-sudo dpkg --add-architecture i386
-wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
-sudo apt update -y
-sudo apt install --install-recommends winehq-stable
+#echo "正在安装wine"
+#sudo dpkg --add-architecture i386
+#wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+#sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+#sudo apt update -y
+#sudo apt install --install-recommends winehq-stable
 
 echo "正在安装protoc"
-wget https://github.com/protocolbuffers/protobuf/releases/download/v3.15.5/protoc-3.15.5-linux-x86_64.zip
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.17.0/protoc-3.17.0-linux-x86_64.zip
 unzip -n protoc-*.zip -d /opt/ide/protoc && rm -rf protoc-*.zip
 
 echo "正在安装gcc和g++"
-sudo apt install gcc-8 g++-8 gcc-9 g++-9 gcc-10 g++-10
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 80
-sudo update-alternatives --config gcc
-sudo update-alternatives --config g++
+#sudo apt install gcc-8 g++-8 gcc-9 g++-9 gcc-10 g++-10
+#sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100
+#sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90
+#sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 80
+#sudo update-alternatives --config gcc
+#sudo update-alternatives --config g++
 sudo apt-get install cmake qtcreator clang llvm -y
 
 echo "正在安装jdk1.8"
-wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u281-linux-x64.tar.gz
+wget https://github.com/bytegriffin/java/releases/download/jdk/jdk-8u291-linux-x64.tar.gz
 sudo tar xzf jdk-*.tar.gz -C /opt/ide && rm -rf jdk-*.tar.gz
-sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_261/bin/java 300
-sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_261/bin/javac 300
+sudo update-alternatives --install /usr/bin/java java /opt/ide/jdk1.8.0_291/bin/java 300
+sudo update-alternatives --install /usr/bin/javac javac /opt/ide/jdk1.8.0_291/bin/javac 300
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
 echo "正在安装flutter"
-wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.0.1-stable.tar.xz
-sudo tar xf flutter_*.tar.xz -C /opt/ide && rm -rf flutter_*.tar.xz
+wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.0.6-stable.tar.xz
+sudo tar xzf flutter_*.tar.xz -C /opt/ide && rm -rf flutter_*.tar.xz
 
 echo "正在安装golang"
-wget https://golang.google.cn/dl/go1.16.linux-amd64.tar.gz
+wget https://golang.google.cn/dl/go1.16.4.linux-amd64.tar.gz
 sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 
 echo "正在安装redis"
-wget https://download.redis.io/releases/redis-6.2.1.tar.gz
+wget https://download.redis.io/releases/redis-6.2.3.tar.gz
 sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
 
 echo "正在安装python3 pip"
@@ -198,20 +198,21 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
 sudo apt-get install python3-setuptools
 
 echo "正在安装Mysql8 注意:选择采用5.x的加密方式"
-wget https://repo.mysql.com/mysql-apt-config_0.8.15-1_all.deb
+wget https://repo.mysql.com/mysql-apt-config_0.8.17-1_all.deb
 sudo dpkg -i mysql-*.deb
 sudo apt update
 sudo apt-get install mysql-server  mysql-client -y
 sudo rm -rf mysql-*.deb
 
 echo "正在安装DBBeaver"
-wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+wget https://dbeaver.com/files/dbeaver-ee_latest_amd64.deb
 sudo dpkg -i dbeaver-*.deb
 sudo apt update
 sudo rm -rf dbeaver-*.deb
 
 echo "正在安装Virtualbox"
-wget https://download.virtualbox.org/virtualbox/6.1.18/virtualbox-6.1_6.1.18-142142~Ubuntu~eoan_amd64.deb
+wget https://download.virtualbox.org/virtualbox/6.1.22/virtualbox-6.1_6.1.22-144080~Ubuntu~eoan_amd64.deb
+sudo apt-get install libqt5opengl5 -y
 sudo dpkg -i virtualbox-*.deb
 sudo apt update
 sudo rm -rf virtualbox-*.deb
@@ -224,11 +225,7 @@ sudo apt install aufs-tools cgroupfs-mount pigz
 sudo apt-get install docker-ce -y
 
 echo "正在设置daocloud.io，打开https://www.daocloud.io/mirror，可以看到具体地址"
-sudo tee /etc/docker/daemon.json <<-'EOF'
-{
-    "registry-mirrors": ["http://f1361db2.m.daocloud.io"]
-}
-EOF
+curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
@@ -254,48 +251,42 @@ sudo apt-get update
 sudo apt-get install typora
 
 echo "正在安装scala"
-wget https://downloads.lightbend.com/scala/2.13.3/scala-2.13.3.tgz
+wget https://downloads.lightbend.com/scala/2.13.6/scala-2.13.6.tgz
 sudo tar xzf scala*.tgz -C /opt/ide && rm -rf scala*.tgz
 
 echo "正在安装mongodb"
-wget https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/4.4/multiverse/binary-amd64/mongodb-org-server_4.4.0_amd64.deb
+wget https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/4.4/multiverse/binary-amd64/mongodb-org-server_4.4.6_amd64.deb
 sudo dpkg -i mongodb-*.deb && rm mongodb-*.deb
 
 echo "正在安装Etcd"
-wget https://github.com/etcd-io/etcd/releases/download/v3.4.13/etcd-v3.4.13-linux-amd64.tar.gz
+wget https://github.com/etcd-io/etcd/releases/download/v3.4.16/etcd-v3.4.16-linux-amd64.tar.gz
 sudo tar xzf etcd*.tar.gz -C /opt/ide && rm etcd-*.tar.gz
 mv /opt/ide/etcd* /opt/ide/etcd
 
 echo "正在安装VSCode"
-wget https://vscode.cdn.azure.cn/stable/a0479759d6e9ea56afa657e454193f72aef85bd0/code_1.48.2-1598353430_amd64.deb
+wget https://vscode.cdn.azure.cn/stable/054a9295330880ed74ceaedda236253b4f39a335/code_1.56.2-1620838498_amd64.deb
 sudo dpkg -i code*.deb && rm code*.deb
 
 echo "关闭错误报告"
 sudo sed -i 's/enabled=1/enabled=0/' /etc/default/apport && sudo service apport restart
 
-echo "正在安装Dukto"
-sudo add-apt-repository ppa:rock-core/qt4
-sudo apt update
-sudo apt install libqtcore4 -y
-wget http://ftp.lysator.liu.se/pub/opensuse/repositories/home:/colomboem/xUbuntu_16.04/amd64/dukto_6.0-1_amd64.deb
-sudo dpkg -i dukto_*.deb && rm code*.deb
+#echo "正在安装Dukto"
+#sudo add-apt-repository ppa:rock-core/qt4
+#sudo apt update
+#sudo apt install libqtcore4 -y
+#wget http://ftp.lysator.liu.se/pub/opensuse/repositories/home:/colomboem/xUbuntu_16.04/amd64/dukto_6.0-1_amd64.deb
+#sudo dpkg -i dukto_*.deb && rm code*.deb
 
 echo "正在安装Listen1"
-wget https://github.com/listen1/listen1_desktop/releases/download/v2.12.3/listen1_2.12.3_linux_amd64.deb
+wget https://github.com/listen1/listen1_desktop/releases/download/v2.21.4/listen1_2.21.4_linux_amd64.deb
 sudo dpkg -i listen1*.deb && rm listen1*.deb
 
-echo "正在安装Wine软件"
-wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
-sudo apt-get install deepin.com.wechat
-sudo apt-get install deepin.com.qq.im
-sudo apt-get install deepin.com.baidu.pan
-sudo apt-get install deepin.com.thunderspeed
-sudo apt-get install deepin.cn.com.winrar
+#echo "正在安装Wine软件 完整列表见 https://deepin-wine.i-m.dev/"
+#wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
+#sudo apt-get install com.qq.weixin.deepin
+#sudo apt-get install com.qq.im.deepin
 
 echo "正在清理安装过程中产生的冗余软件包"
 sudo apt autoremove --purge -y
 sudo apt autoclean
 sudo apt clean
-
-
-
