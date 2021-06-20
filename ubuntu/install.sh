@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cho "Ubuntu 21.04 配置脚本 v2021.5.18"
+cho "Ubuntu 21.04 配置脚本 v2021.6.20"
 echo "--------------------------------------------------"
 
 echo "请选择速度最快的那个软件源"
@@ -124,6 +124,11 @@ sudo dpkg -i netease-cloud-music_*.deb && rm netease-*.deb
 
 echo "正在安装arc-theme主题"
 sudo apt install arc-theme -y
+
+echo "正在安装flat主题"
+sudo add-apt-repository ppa:daniruiz/flat-remix
+sudo apt update
+sudo apt install flat-remix
 
 echo "正在安装 tweak-tool"
 sudo apt-get install unity-tweak-tool gnome-tweak-tool gnome-shell-extensions chrome-gnome-shell gnome-session gtk2-engines-pixbuf libxml2-utils -y
