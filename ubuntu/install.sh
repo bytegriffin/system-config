@@ -42,10 +42,11 @@ git config --global core.editor vim
 
 echo "正在安装 oh-my-zsh"
 sudo apt-get install zsh -y
-#上面的命令如果报“拒绝连接”的错误，可以试着去https://site.ip138.com/ ，输入raw.githubusercontent.com 进行查询,
+#上面的命令如果报“拒绝连接”的错误，可以试着去https://githubusercontent.com.ipaddress.com/raw.githubusercontent.com 进行查询,
 #然后执行 sudo vi /etc/hosts  把151.101.108.133 raw.githubusercontent.com添加进去
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 sudo vi ~/.zshrc 
 #将ZSH_THEME="ys" ，并且将 plugins=(zsh-autosuggestions)
 source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -133,11 +134,6 @@ sudo apt install unrar guake p7zip-full  p7zip-rar  rar unzip -y
 echo "正在安装kvm,android开发环境"
 sudo apt-get install qemu-kvm bridge-utils -y
 
-#echo "正在安装Xtreme Download Managert下载工具"
-#wget https://github.com/subhra74/xdm/releases/download/7.2.11/xdm-setup-7.2.11.tar.xz
-#tar -xvf xdm-*.tar.xz
-#sudo ./install.sh && rm -rf xdm-*.tar.xz install.sh readme.txt
-
 echo "正在安装Motrix下载工具"
 wget https://dl.moapp.me/https://github.com/agalwood/Motrix/releases/download/v1.6.11/Motrix_1.6.11_amd64.deb
 sudo dpkg -i Motrix*.deb && rm -rf Motrix*
@@ -154,12 +150,12 @@ curl -sLf https://spacevim.org/cn/install.sh | bash
 #echo "正在安装wine"
 #sudo dpkg --add-architecture i386
 #wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-#sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+#sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main'
 #sudo apt update -y
 #sudo apt install --install-recommends winehq-stable
 
 echo "正在安装protoc"
-wget https://github.com/protocolbuffers/protobuf/releases/download/v3.17.0/protoc-3.17.0-linux-x86_64.zip
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.17.3/protoc-3.17.3-linux-x86_64.zip
 unzip -n protoc-*.zip -d /opt/ide/protoc && rm -rf protoc-*.zip
 
 echo "正在安装gcc和g++"
@@ -180,15 +176,15 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 
 echo "正在安装flutter"
-wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_2.0.6-stable.tar.xz
+wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.2.2-stable.tar.xz
 sudo tar xzf flutter_*.tar.xz -C /opt/ide && rm -rf flutter_*.tar.xz
 
 echo "正在安装golang"
-wget https://golang.google.cn/dl/go1.16.4.linux-amd64.tar.gz
+wget https://golang.google.cn/dl/go1.16.5.linux-amd64.tar.gz
 sudo tar xzf go*.tar.gz -C /opt/ide && rm -rf go*.tar.gz
 
 echo "正在安装redis"
-wget https://download.redis.io/releases/redis-6.2.3.tar.gz
+wget https://download.redis.io/releases/redis-6.2.4.tar.gz
 sudo tar xzf redis*.tar.gz -C /opt/ide && rm -rf redis*.tar.gz
 
 echo "正在安装python3 pip"
@@ -264,7 +260,7 @@ sudo tar xzf etcd*.tar.gz -C /opt/ide && rm etcd-*.tar.gz
 mv /opt/ide/etcd* /opt/ide/etcd
 
 echo "正在安装VSCode"
-wget https://vscode.cdn.azure.cn/stable/054a9295330880ed74ceaedda236253b4f39a335/code_1.56.2-1620838498_amd64.deb
+wget https://az764295.vo.msecnd.net/stable/507ce72a4466fbb27b715c3722558bb15afa9f48/code_1.57.1-1623937013_amd64.deb
 sudo dpkg -i code*.deb && rm code*.deb
 
 echo "关闭错误报告"
@@ -278,7 +274,7 @@ sudo sed -i 's/enabled=1/enabled=0/' /etc/default/apport && sudo service apport 
 #sudo dpkg -i dukto_*.deb && rm code*.deb
 
 echo "正在安装Listen1"
-wget https://github.com/listen1/listen1_desktop/releases/download/v2.21.4/listen1_2.21.4_linux_amd64.deb
+wget https://github.com/listen1/listen1_desktop/releases/download/v2.21.5/listen1_2.21.5_linux_amd64.deb
 sudo dpkg -i listen1*.deb && rm listen1*.deb
 
 #echo "正在安装Wine软件 完整列表见 https://deepin-wine.i-m.dev/"
